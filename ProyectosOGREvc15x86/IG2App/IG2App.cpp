@@ -62,8 +62,8 @@ void IG2App::setupScene(void){
     mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
     mCamNode->attachObject(cam);
 
-    mCamNode->setPosition(0, 0, 1000);
-    mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
+    mCamNode->setPosition(0, 0, 1000); //posicion de la camara
+    mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);//punto donde mira la camara
     
     // and tell it to render into the main window
     Viewport* vp = getRenderWindow()->addViewport(cam);
@@ -84,7 +84,7 @@ void IG2App::setupScene(void){
     mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
     //mLightNode = mCamNode->createChildSceneNode("nLuz");
     mLightNode->attachObject(luz);
-    mLightNode->setDirection(Ogre::Vector3(0, 0, -1));
+    mLightNode->setDirection(Ogre::Vector3(0, -1, -1));
     
 
     
