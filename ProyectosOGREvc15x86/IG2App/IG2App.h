@@ -28,6 +28,12 @@ protected:
     
     
     Ogre::SceneNode* mSinbadNode = nullptr;
+    Ogre::SceneNode* mRomanNode = nullptr;
+    Ogre::SceneNode* mRoman1Node = nullptr;
+
+    Ogre::SceneNode* mSnowManNode = nullptr;
+    Ogre::SceneNode* mCabezaNode = nullptr;
+    Ogre::SceneNode* mCuerpoNode = nullptr;
       
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
