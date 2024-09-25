@@ -24,7 +24,7 @@ public:
     {
         std::ifstream archivo(nombreArchivo);
 
-        if (!archivo.is_open())
+        if (!archivo)
         {
             std::cerr << "No se pudo abrir el archivo: " << nombreArchivo << std::endl;
             return;
@@ -39,7 +39,7 @@ public:
 
             for (int j = 0; j < columnas; ++j)
             {
-                Vector3 pos(i, 0, j);
+                Vector3 pos(100 * i, 0, 100 * j);
 
                 if (linea[j] == 'x')  
                 {
