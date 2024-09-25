@@ -2,6 +2,7 @@
 #define __IG2App_H__
 
 #include "IG2ApplicationContext.h"
+#include "Laberinto.h"
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreTrays.h>
@@ -26,14 +27,11 @@ protected:
     virtual void shutdown();
     virtual void setupScene();
     
-    
+    Laberinto* laberinto = nullptr;
+
     Ogre::SceneNode* mSinbadNode = nullptr;
-    Ogre::SceneNode* mRomanNode = nullptr;
-    Ogre::SceneNode* mRoman1Node = nullptr;
 
     Ogre::SceneNode* mSnowManNode = nullptr;
-    Ogre::SceneNode* mCabezaNode = nullptr;
-    Ogre::SceneNode* mCuerpoNode = nullptr;
       
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
