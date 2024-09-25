@@ -89,7 +89,7 @@ void IG2App::setupScene(void){
     //------------------------------------------------------------------------
         // Creating the laberinto
         // The laberinto is created by loading from a file
-    string nombreArchivo = "../stage1.txt";
+    string nombreArchivo = "../stage2.txt";
     laberinto = new Laberinto(nombreArchivo, mSM, mSM->getRootSceneNode());
 }
 

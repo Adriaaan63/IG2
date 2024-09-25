@@ -31,7 +31,10 @@ public:
         }
 
         archivo >> filas >> columnas;
+        archivo.ignore();  // Ignorar el resto de la línea
+
         bloques.resize(filas, std::vector<Bloque*>(columnas, nullptr));
+
         for (int i = 0; i < filas; ++i)
         {
             std::string linea;
@@ -41,11 +44,11 @@ public:
             {
                 Vector3 pos(100 * i, 0, 100 * j);
 
-                if (linea[j] == 'x')  
+                if (linea[j] == 'x')
                 {
                     bloques[i][j] = new Muro(pos, parentNode->createChildSceneNode(), sceneManager);
                 }
-                else if (linea[j] == 'o') 
+                else if (linea[j] == 'o')
                 {
                     bloques[i][j] = new Hueco(pos, parentNode->createChildSceneNode(), sceneManager);
                 }
@@ -53,5 +56,6 @@ public:
         }
         archivo.close();
     }
+
 };
 
