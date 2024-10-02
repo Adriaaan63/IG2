@@ -95,6 +95,7 @@ void IG2App::setupScene(void){
     Vector3 posHeroe = laberinto->getPosHeroe();
     heroe = new Heroe(posHeroe, mSM->getRootSceneNode()->createChildSceneNode(), mSM, "Sinbad.mesh");
     heroe->setScale(Vector3(10.0, 10.0, 10.0));
+    addInputListener(heroe);
 }
 
 
