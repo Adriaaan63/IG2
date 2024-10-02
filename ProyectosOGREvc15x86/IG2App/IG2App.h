@@ -3,6 +3,7 @@
 
 #include "IG2ApplicationContext.h"
 #include "Laberinto.h"
+#include "Heroe.h"
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreTrays.h>
@@ -28,6 +29,7 @@ protected:
     virtual void setupScene();
     
     Laberinto* laberinto = nullptr;
+    Heroe* heroe = nullptr;
 
     Ogre::SceneNode* mSinbadNode = nullptr;
 

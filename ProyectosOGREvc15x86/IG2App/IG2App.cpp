@@ -62,8 +62,8 @@ void IG2App::setupScene(void){
     mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
     mCamNode->attachObject(cam);
 
-    mCamNode->setPosition(0, 0, 1000); //posicion de la camara
-    mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);//punto donde mira la camara
+    //mCamNode->setPosition(0, 0, 1000); //posicion de la camara
+    //mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);//punto donde mira la camara
     
     // and tell it to render into the main window
     Viewport* vp = getRenderWindow()->addViewport(cam);
@@ -89,8 +89,12 @@ void IG2App::setupScene(void){
     //------------------------------------------------------------------------
         // Creating the laberinto
         // The laberinto is created by loading from a file
-    string nombreArchivo = "../stage2.txt";
-    laberinto = new Laberinto(nombreArchivo, mSM, mSM->getRootSceneNode());
+    string nombreArchivo = "../stage1.txt";
+    laberinto = new Laberinto(nombreArchivo, mSM, mSM->getRootSceneNode(), mCamNode);
+    
+    Vector3 posHeroe = laberinto->getPosHeroe();
+    heroe = new Heroe(posHeroe, mSM->getRootSceneNode()->createChildSceneNode(), mSM, "Sinbad.mesh");
+    heroe->setScale(Vector3(10.0, 10.0, 10.0));
 }
 
 
