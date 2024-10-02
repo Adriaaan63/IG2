@@ -10,7 +10,7 @@ private:
 public:
 	Heroe(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh): 
 		IG2Object(pos, node, sceneManager, mesh){
-		dir = Vector3(0, 0, 0);
+		dir = Vector3(0, 0, 1);
 		next_dir = Vector3(0, 0, 0);
 	}
 	~Heroe() {
