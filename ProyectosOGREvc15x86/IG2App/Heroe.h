@@ -18,6 +18,6 @@ public:
 	}
 	void init() override {}
 
-	bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
+	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 };
 
