@@ -59,6 +59,8 @@ public:
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
                 }
                 else if (linea[j] == 'h') {
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
                     posHeroe = pos;
                 }
                 

@@ -31,22 +31,13 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
         // Salir o manejar el error
         return;
     }
-    if (fmod(getPosition().x, 100.0f) == 0 && fmod(getPosition().z, 100.0f) == 0) {
-        Vector3 nextPosition(next_dir.x * 100 + getPosition().x, 0, next_dir.z * 100 + getPosition().z);
+    if (fmod(getPosition().x, TILE_WIDTH) == 0 && fmod(getPosition().z, TILE_HEIGHT) == 0) {
+        Vector3 nextPosition = Vector3(next_dir.x * TILE_WIDTH + getPosition().x, 0, next_dir.z * TILE_HEIGHT + getPosition().z);
 
         // Verificar si lab no es nulo antes de llamar a esTrapasable
         if (lab->esTrapasable(nextPosition)) {
-            float dot = dir.dotProduct(next_dir);
-            float angle = Ogre::Math::ACos(dot).valueDegrees();
-
-            Vector3 cross = dir.crossProduct(next_dir);
-            if (cross.y < 0) {
-                angle = -angle;
-            }
-
-            if (angle != 0) {
-                mNode->yaw(Degree(angle));
-            }
+            Quaternion q = this->getOrientation().getRotationTo(next_dir);
+            mNode->rotate(q);
 
             dir = next_dir;
         }
