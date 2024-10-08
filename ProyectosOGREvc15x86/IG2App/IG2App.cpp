@@ -93,7 +93,7 @@ void IG2App::setupScene(void){
     laberinto = new Laberinto(nombreArchivo, mSM, mSM->getRootSceneNode(), mCamNode);
     
     Vector3 posHeroe = laberinto->getPosHeroe();
-    heroe = new Heroe(posHeroe, mSM->getRootSceneNode()->createChildSceneNode(), mSM, "Sinbad.mesh");
+    heroe = new Heroe(posHeroe, mSM->getRootSceneNode()->createChildSceneNode(), mSM, "Sinbad.mesh", laberinto);
     heroe->setScale(Vector3(10.0, 10.0, 10.0));
     addInputListener(heroe);
 }

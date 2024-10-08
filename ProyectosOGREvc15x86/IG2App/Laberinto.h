@@ -85,5 +85,10 @@ public:
         // Hacemos que la cámara mire hacia el centro del laberinto
         camNode->lookAt(Vector3(centroX, 0, centroZ), Node::TS_WORLD);
     }
+    bool esTrapasable(Vector3 posBloque) {
+        int x = posBloque.x / TILE_WIDTH;
+        int z = posBloque.z / TILE_HEIGHT;
+        return bloques[x][z]->esTraspasable();
+    }
 };
 
