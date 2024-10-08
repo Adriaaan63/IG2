@@ -45,7 +45,7 @@ public:
 
             for (int j = 0; j < columnas; ++j)
             {
-                Vector3 pos(100 * i, 0, 100 * j);
+                Vector3 pos(TILE_WIDTH * i, 0, TILE_WIDTH * j);
 
                 if (linea[j] == 'x')
                 {

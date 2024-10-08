@@ -4,16 +4,16 @@ bool Heroe::keyPressed(const OgreBites::KeyboardEvent& evt) {
     Vector3 newDir;
 
     if (evt.keysym.sym == SDLK_UP) {
-        newDir = Vector3(0, 0, -100);
+        newDir = Vector3(0, 0, -1);
     }
     else if (evt.keysym.sym == SDLK_DOWN) {
-        newDir = Vector3(0, 0, 100);
+        newDir = Vector3(0, 0, 1);
     }
     else if (evt.keysym.sym == SDLK_LEFT) {
-        newDir = Vector3(-100, 0, 0);
+        newDir = Vector3(-1, 0, 0);
     }
     else if (evt.keysym.sym == SDLK_RIGHT) {
-        newDir = Vector3(100, 0, 0);
+        newDir = Vector3(1, 0, 0);
     }
     else {
         return true; 
@@ -32,7 +32,9 @@ bool Heroe::keyPressed(const OgreBites::KeyboardEvent& evt) {
     }
 
     dir = newDir;
-    move(dir);
 
     return true;
+}
+void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
+    move(dir);
 }
