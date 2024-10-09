@@ -45,22 +45,22 @@ public:
 
             for (int j = 0; j < columnas; ++j)
             {
-                Vector3 pos(TILE_WIDTH * i, 0, TILE_WIDTH * j);
+                Vector3 pos(TILE_WIDTH * j, 0, TILE_WIDTH * i);
 
                 if (linea[j] == 'x')
                 {
                     //Muros
-                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager,"cube.mesh", false);
+                    bloques[j][i] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager,"cube.mesh", false);
                 }
                 else if (linea[j] == 'o')
                 {
                     //Hueco perlas
-                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
-                    bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
+                    bloques[j][i] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[j][i]->setScale(Vector3(0.1, 0.1, 0.1));
                 }
                 else if (linea[j] == 'h') {
-                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
-                    bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
+                    bloques[j][i] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[j][i]->setScale(Vector3(0.1, 0.1, 0.1));
                     posHeroe = pos;
                 }
                 
@@ -77,12 +77,12 @@ public:
 
     void ajustarCamara(SceneNode* camNode) {
         // Ajustamos la cámara para que vea todo el laberinto
-        float alturaCamara = max(filas, columnas) *70;  // Ajustamos la altura dependiendo del tamaño del laberinto
+        float alturaCamara = max(filas, columnas) *100;  // Ajustamos la altura dependiendo del tamaño del laberinto
         float centroX = (filas - 1) * 100 / 2.0f; // Centro del laberinto en X
         float centroZ = (columnas - 1) * 100 / 2.0f; // Centro del laberinto en Z
 
         // Colocamos la cámara en una posición elevada y centrada
-        camNode->setPosition(centroX, alturaCamara, centroZ / 0.4f);
+        camNode->setPosition(centroX, alturaCamara, centroZ / 0.35f);
 
         // Hacemos que la cámara mire hacia el centro del laberinto
         camNode->lookAt(Vector3(centroX, 0, centroZ), Node::TS_WORLD);

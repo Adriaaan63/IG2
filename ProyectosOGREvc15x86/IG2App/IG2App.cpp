@@ -85,7 +85,7 @@ void IG2App::setupScene(void){
     mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
     //mLightNode = mCamNode->createChildSceneNode("nLuz");
     mLightNode->attachObject(luz);
-    mLightNode->setDirection(Ogre::Vector3(1, 1, -1));  
+    mLightNode->setDirection(Ogre::Vector3(0, -1, -1));  
     //------------------------------------------------------------------------
         // Creating the laberinto
         // The laberinto is created by loading from a file
