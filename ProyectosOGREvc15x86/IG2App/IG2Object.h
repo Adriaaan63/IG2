@@ -85,7 +85,9 @@ class IG2Object : public OgreBites::InputListener {
          * @param visible If true, the element is visible. The element is not visible otherwise.
          */
         void setVisible (bool visible);
-    
+        bool isVisible() const {
+            return entity->isVisible();
+        }
         /**
          * Gets the AABB for this element.
          * @return AABB of this element.

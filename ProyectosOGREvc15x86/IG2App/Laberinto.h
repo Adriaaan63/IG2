@@ -92,5 +92,10 @@ public:
         int z = posBloque.z / TILE_HEIGHT;
         return bloques[x][z]->esTraspasable();
     }
+    Bloque* getBloque(Vector3 posBloque) const {
+        int x = posBloque.x / TILE_WIDTH;
+        int z = posBloque.z / TILE_HEIGHT;
+        return bloques[x][z];
+    }
 };
 

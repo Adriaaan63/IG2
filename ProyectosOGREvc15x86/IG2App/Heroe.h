@@ -1,6 +1,7 @@
 #pragma once
 #include "IG2Object.h"
 #include "Laberinto.h"
+#include "OgreAxisAlignedBox.h"
 
 class Heroe : public IG2Object 
 {
@@ -8,10 +9,11 @@ private:
 	Vector3 dir;
 	Vector3 next_dir;
 	Laberinto* lab;
+	int puntos;
 
 public:
 	Heroe(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh,Laberinto* lab ): 
-		IG2Object(pos, node, sceneManager, mesh), lab(lab){
+		IG2Object(pos, node, sceneManager, mesh), lab(lab), puntos(0){
 		dir = Vector3(0, 0, 1);
 		next_dir = Vector3(0, 0, 1);
 	}
