@@ -28,6 +28,8 @@ protected:
     virtual void shutdown();
     virtual void setupScene();
     
+    OgreBites::TextBox* InfoTextBox;
+    OgreBites::Label* InfoLabel;
     Laberinto* laberinto = nullptr;
     Heroe* heroe = nullptr;
 
