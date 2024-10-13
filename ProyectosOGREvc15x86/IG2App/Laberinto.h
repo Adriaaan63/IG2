@@ -34,7 +34,7 @@ public:
         }
 
         archivo >> filas >> columnas;
-        archivo.ignore();  // Ignorar el resto de la línea
+        archivo.ignore();  
 
         bloques.resize(filas, std::vector<Bloque*>(columnas, nullptr));
 
@@ -76,26 +76,33 @@ public:
     };
 
     void ajustarCamara(SceneNode* camNode) {
-        // Ajustamos la cámara para que vea todo el laberinto
-        float alturaCamara = max(filas, columnas) *100;  // Ajustamos la altura dependiendo del tamaño del laberinto
-        float centroX = (filas - 1) * 100 / 2.0f; // Centro del laberinto en X
-        float centroZ = (columnas - 1) * 100 / 2.0f; // Centro del laberinto en Z
+        float alturaCamara = max(filas, columnas) *100;  
+        float centroX = (filas - 1) * 100 / 2.0f; 
+        float centroZ = (columnas - 1) * 100 / 2.0f; 
 
-        // Colocamos la cámara en una posición elevada y centrada
         camNode->setPosition(centroX, alturaCamara, centroZ / 0.35f);
-
-        // Hacemos que la cámara mire hacia el centro del laberinto
+        
         camNode->lookAt(Vector3(centroX, 0, centroZ), Node::TS_WORLD);
     }
+
     bool esTrapasable(Vector3 posBloque) {
         int x = posBloque.x / TILE_WIDTH;
         int z = posBloque.z / TILE_HEIGHT;
         return bloques[x][z]->esTraspasable();
     }
+
     Bloque* getBloque(Vector3 posBloque) const {
         int x = posBloque.x / TILE_WIDTH;
         int z = posBloque.z / TILE_HEIGHT;
         return bloques[x][z];
+    }
+
+    int getFilas() {
+        return filas;
+    }
+
+    int getColumnas() {
+        return columnas;
     }
 };
 
