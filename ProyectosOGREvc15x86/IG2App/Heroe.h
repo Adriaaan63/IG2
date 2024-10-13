@@ -1,6 +1,5 @@
 #pragma once
 #include "Personaje.h"
-#include "Laberinto.h"
 #include "OgreAxisAlignedBox.h"
 
 class Heroe : public Personaje 
