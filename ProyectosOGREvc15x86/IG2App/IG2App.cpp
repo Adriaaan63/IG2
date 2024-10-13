@@ -95,7 +95,7 @@ void IG2App::setupScene(void){
     //------------------------------------------------------------------------
     // Crear el plano que servirá de suelo
     Plane plane(Vector3::UNIT_Y, -50);  
-    MeshManager::getSingleton().createPlane("ground", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane, laberinto->getFilas() * 100, laberinto->getColumnas() *  100, 20, 20, true, 1, 5, 5, Vector3::UNIT_Z);
+    MeshManager::getSingleton().createPlane("ground", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane, (laberinto->getFilas() - 1) * 100, (laberinto->getColumnas() - 1) * 100, 20, 20, true, 1, 5, 5, Vector3::UNIT_Z);
     Entity* entSuelo = mSM->createEntity("ground");
     SceneNode* nodeSuelo = mSM->getRootSceneNode()->createChildSceneNode();
     nodeSuelo->setPosition(laberinto->getColumnas() * 100 / 2, 0, laberinto->getFilas() * 100 / 2);
