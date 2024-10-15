@@ -1,6 +1,14 @@
 #include "Personaje.h"
+#include "Laberinto.h"
+Personaje::Personaje(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab, Vector3 dir, Vector3 next_dir) :
+    IG2Object(pos, node, sceneManager, mesh), lab(lab), dir(dir), next_dir(next_dir) {
+};
+Personaje:: ~Personaje() {
+
+};
+
 void Personaje::giro() {
-    if (fmod(getPosition().x, TILE_WIDTH) == 0 && fmod(getPosition().z, TILE_HEIGHT) == 0) {
+    
         Vector3 nextPosition = Vector3(next_dir.x * TILE_WIDTH + getPosition().x, 0, next_dir.z * TILE_HEIGHT + getPosition().z);
         Vector3 enFrentePosition = Vector3(dir.x * TILE_WIDTH + getPosition().x, 0, dir.z * TILE_HEIGHT + getPosition().z);
 
@@ -14,5 +22,5 @@ void Personaje::giro() {
         else if (!lab->esTrapasable(enFrentePosition)) {
             dir = Vector3(0, 0, 0);
         }
-    }
+    
 }

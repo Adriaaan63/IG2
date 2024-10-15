@@ -31,7 +31,6 @@ protected:
     OgreBites::TextBox* InfoTextBox;
     OgreBites::Label* InfoLabel;
     Laberinto* laberinto = nullptr;
-    Heroe* heroe = nullptr;
 
     Ogre::SceneNode* mSinbadNode = nullptr;
 

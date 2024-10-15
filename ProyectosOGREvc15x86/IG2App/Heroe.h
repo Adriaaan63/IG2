@@ -11,9 +11,9 @@ private:
     int puntos;
     OgreBites::Label* InfoTextBox;  
 public:
-    Heroe(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab, OgreBites::Label* LblBox) :
+    Heroe(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab) :
         Personaje(pos, node, sceneManager, mesh, lab, Vector3(0, 0, 1), Vector3(0, 0, 1)),
-        puntos(0), InfoTextBox(LblBox) {}
+        puntos(0), InfoTextBox(nullptr) {}
 
     ~Heroe() {}
 
@@ -22,4 +22,8 @@ public:
     virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 
     virtual void frameRendered(const Ogre::FrameEvent& evt);
+
+    void setInfoLabel(OgreBites::Label* infoLabel) {
+        InfoTextBox = infoLabel;
+    }
 };

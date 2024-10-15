@@ -104,10 +104,13 @@ void IG2App::setupScene(void){
     InfoTextBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoBox", "Game Info", 200, 50);
     InfoTextBox->setTextAlignment(Ogre::TextAreaOverlayElement::Right);
     InfoLabel = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Puntos: 0", 200);  
-    Vector3 posHeroe = laberinto->getPosHeroe();
-    heroe = new Heroe(posHeroe, mSM->getRootSceneNode()->createChildSceneNode(), mSM, "Sinbad.mesh", laberinto, InfoLabel);
-    heroe->setScale(Vector3(10.0, 10.0, 10.0));
-    addInputListener(heroe);
+    laberinto->getHeroe()->setInfoLabel(InfoLabel);
+   
+    addInputListener(laberinto->getHeroe());
+    for (size_t i = 0; i < laberinto->getVillanos().size(); i++)
+    {
+        addInputListener(laberinto->getVillanos()[i]);
+    }
 }
 
 

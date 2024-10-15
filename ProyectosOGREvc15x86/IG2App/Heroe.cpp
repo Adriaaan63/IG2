@@ -1,4 +1,5 @@
 #include "Heroe.h"
+#include "Laberinto.h"
 
 bool Heroe::keyPressed(const OgreBites::KeyboardEvent& evt) {
     
@@ -25,7 +26,10 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
     if (mNode == nullptr || lab == nullptr) {
         return;
     }
-    giro();
+    if (fmod(getPosition().x, TILE_WIDTH) == 0 && fmod(getPosition().z, TILE_HEIGHT) == 0) {
+        giro();
+    }
+   
     if (lab->getBloque(getPosition())->getAABB().intersects(this->getAABB()) && lab->getBloque(getPosition())->isVisible()) {
         puntos += 10;
         lab->getBloque(getPosition())->setVisible(false);

@@ -1,11 +1,11 @@
 #pragma once
 #include "Bloque.h"
-#include "Hueco.h"
-#include "Muro.h"
 #include <iostream>
 #include <fstream> 
 #include <vector>
-
+#include "Villano.h"
+#include "IG2ApplicationContext.h"
+#include "Heroe.h"
 using namespace std;
 
 class Laberinto
@@ -15,7 +15,8 @@ private:
     int columnas;
     std::vector<std::vector<Bloque*>> bloques;
     Bloque* suelo;
-    Vector3 posHeroe;
+    Heroe* heroe;
+    std::vector<Villano*> villanos;
 public:
     Laberinto(const std::string& nombreArchivo, SceneManager* sceneManager, SceneNode* parentNode, SceneNode* camNode)
     {
@@ -61,7 +62,14 @@ public:
                 else if (linea[j] == 'h') {
                     bloques[j][i] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
                     bloques[j][i]->setScale(Vector3(0.1, 0.1, 0.1));
-                    posHeroe = pos;
+                    heroe = new Heroe(pos, parentNode->createChildSceneNode(), sceneManager, "Sinbad.mesh", this);
+                    heroe->setScale(Vector3(10.0, 10.0, 10.0));
+                }
+                else if (linea[j] == 'v') {
+                    bloques[j][i] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[j][i]->setScale(Vector3(0.1, 0.1, 0.1));
+                    villanos.push_back(new Villano(pos, parentNode->createChildSceneNode(), sceneManager, "ogrehead.mesh", this, Vector3(0, 0, 1), Vector3(0, 0, 1)));
+                    
                 }
                 
             }
@@ -69,12 +77,13 @@ public:
         /*suelo = new Bloque(Vector3(filas *100 / 2, -50.0, columnas * 100 / 2), parentNode->createChildSceneNode(), sceneManager, "cube.mesh", false);
         suelo->setScale(Vector3(-filas, 0.0, columnas));*/
         archivo.close();
+        
     }
 
-    Vector3 getPosHeroe() const { 
-        return posHeroe;
+    Heroe* getHeroe() const { 
+        return heroe;
     };
-
+    std::vector<Villano*> getVillanos()const { return villanos; };
     void ajustarCamara(SceneNode* camNode) {
         float alturaCamara = max(filas, columnas) *100;  
         float centroX = (filas - 1) * 100 / 2.0f; 
@@ -103,6 +112,22 @@ public:
 
     int getColumnas() {
         return columnas;
+    }
+    std::vector<Vector3> getDireccionesTraspasables(Vector3 posBloque) const {
+        std::vector<Vector3> posiblesDirecciones;
+        if (getBloque(Vector3(posBloque.x - TILE_WIDTH, 0, posBloque.z))->esTraspasable()) {
+            posiblesDirecciones.push_back(Vector3(-1, 0, 0));
+        }
+        if (getBloque(Vector3(posBloque.x + TILE_WIDTH, 0, posBloque.z))->esTraspasable()) {
+            posiblesDirecciones.push_back(Vector3(1, 0, 0));
+        }
+        if (getBloque(Vector3(posBloque.x, 0, posBloque.z - TILE_HEIGHT))->esTraspasable()) {
+            posiblesDirecciones.push_back(Vector3(0, 0, -1));
+        }
+        if (getBloque(Vector3(posBloque.x, 0, posBloque.z + TILE_HEIGHT))->esTraspasable()) {
+            posiblesDirecciones.push_back(Vector3(0, 0, 1));
+        }
+        return posiblesDirecciones;
     }
 };
 
