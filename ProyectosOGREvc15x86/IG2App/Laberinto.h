@@ -51,23 +51,23 @@ public:
                 if (linea[j] == 'x')
                 {
                     //Muros
-                    bloques[j][i] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager,"cube.mesh", false);
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager,"cube.mesh", false);
                 }
                 else if (linea[j] == 'o')
                 {
                     //Hueco perlas
-                    bloques[j][i] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
-                    bloques[j][i]->setScale(Vector3(0.1, 0.1, 0.1));
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
                 }
                 else if (linea[j] == 'h') {
-                    bloques[j][i] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
-                    bloques[j][i]->setScale(Vector3(0.1, 0.1, 0.1));
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
                     heroe = new Heroe(pos, parentNode->createChildSceneNode(), sceneManager, "Sinbad.mesh", this);
                     heroe->setScale(Vector3(10.0, 10.0, 10.0));
                 }
                 else if (linea[j] == 'v') {
-                    bloques[j][i] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
-                    bloques[j][i]->setScale(Vector3(0.1, 0.1, 0.1));
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
                     villanos.push_back(new Villano(pos, parentNode->createChildSceneNode(), sceneManager, "ogrehead.mesh", this, Vector3(0, 0, 1), Vector3(0, 0, 1)));
                     
                 }
@@ -97,13 +97,13 @@ public:
     bool esTrapasable(Vector3 posBloque) {
         int x = posBloque.x / TILE_WIDTH;
         int z = posBloque.z / TILE_HEIGHT;
-        return bloques[x][z]->esTraspasable();
+        return bloques[z][x]->esTraspasable();
     }
 
     Bloque* getBloque(Vector3 posBloque) const {
         int x = posBloque.x / TILE_WIDTH;
         int z = posBloque.z / TILE_HEIGHT;
-        return bloques[x][z];
+        return bloques[z][x];
     }
 
     int getFilas() {

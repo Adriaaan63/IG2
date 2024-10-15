@@ -36,5 +36,5 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
         cout << puntos << endl;
         InfoTextBox->setCaption("Puntos: " + std::to_string(puntos));
     }
-    move(dir);
+    move(dir * speed);
 }

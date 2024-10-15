@@ -21,7 +21,7 @@ Vector3 Villano::nuevaDireccion() {
     Vector3 mejorDireccion;
     for (const auto& dir : posiblesDirecciones) {
         // Evitar giros de 180 grados
-        if (dir != -this->dir) {
+        if (dir != -this->dir || posiblesDirecciones.size() == 1) {
             Vector3 siguientePosicion = Vector3(dir.x * TILE_WIDTH + getPosition().x, 0, dir.z * TILE_HEIGHT + getPosition().z);
             // Calcular la distancia al héroe
             float distancia = hypot(posicionHeroe.x - siguientePosicion.x, posicionHeroe.z - siguientePosicion.z);
