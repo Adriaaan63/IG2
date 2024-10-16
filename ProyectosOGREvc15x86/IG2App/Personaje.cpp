@@ -3,6 +3,9 @@
 Personaje::Personaje(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab, Vector3 dir, Vector3 next_dir) :
     IG2Object(pos, node, sceneManager, mesh), lab(lab), dir(dir), next_dir(next_dir) {
 };
+Personaje::Personaje(Vector3 pos, SceneNode* node, SceneManager* sceneManager, Laberinto* lab, Vector3 dir, Vector3 next_dir) :
+    IG2Object(pos, node, sceneManager), lab(lab), dir(dir), next_dir(next_dir) {
+};
 Personaje:: ~Personaje() {
 
 };

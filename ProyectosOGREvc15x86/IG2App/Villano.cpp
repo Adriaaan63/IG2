@@ -1,7 +1,7 @@
 #include "Villano.h"
 #include "Laberinto.h"
 void Villano::createVillano() {
-
+    
 }
 void Villano::frameRendered(const Ogre::FrameEvent& evt) {
     if (mNode == nullptr || lab == nullptr) {

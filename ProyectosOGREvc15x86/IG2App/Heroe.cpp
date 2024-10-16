@@ -29,6 +29,11 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
     if (fmod(getPosition().x, TILE_WIDTH) == 0 && fmod(getPosition().z, TILE_HEIGHT) == 0) {
         giro();
     }
+    else {
+        if (dir == -next_dir) {
+            giro();
+        }
+    }
    
     if (lab->getBloque(getPosition())->getAABB().intersects(this->getAABB()) && lab->getBloque(getPosition())->isVisible()) {
         puntos += 10;

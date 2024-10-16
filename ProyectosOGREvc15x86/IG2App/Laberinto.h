@@ -14,7 +14,6 @@ private:
     int filas;
     int columnas;
     std::vector<std::vector<Bloque*>> bloques;
-    Bloque* suelo;
     Heroe* heroe;
     std::vector<Villano*> villanos;
 public:
@@ -68,14 +67,13 @@ public:
                 else if (linea[j] == 'v') {
                     bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
-                    villanos.push_back(new Villano(pos, parentNode->createChildSceneNode(), sceneManager, "ogrehead.mesh", this, Vector3(0, 0, 1), Vector3(0, 0, 1)));
+                    villanos.push_back(new Villano(pos, parentNode->createChildSceneNode(), sceneManager, "ogrehead.mesh", this));
                     
                 }
                 
             }
         }
-        /*suelo = new Bloque(Vector3(filas *100 / 2, -50.0, columnas * 100 / 2), parentNode->createChildSceneNode(), sceneManager, "cube.mesh", false);
-        suelo->setScale(Vector3(-filas, 0.0, columnas));*/
+       
         archivo.close();
         
     }

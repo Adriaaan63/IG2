@@ -10,10 +10,14 @@ private:
 	void createVillano();
 
 public:
-	Villano(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab, Vector3 dir, Vector3 next_dir) :
-		Personaje(pos, node, sceneManager, mesh, lab, dir, next_dir) {
-		/*createVillano();*/
+	Villano(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab) :
+		Personaje(pos, node, sceneManager, mesh, lab, Vector3(0,0,0), Vector3(0, 0, 0)) {
 		
+	};
+	Villano(Vector3 pos, SceneNode* node, SceneManager* sceneManager, Laberinto* lab) :
+		Personaje(pos, node, sceneManager, lab, Vector3(0, 0, 0), Vector3(0, 0, 0)) {
+		createVillano();
+
 	};
 
 	~Villano() {
