@@ -39,7 +39,7 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
         puntos += 10;
         lab->getBloque(getPosition())->setVisible(false);
         cout << puntos << endl;
-        InfoTextBox->setCaption("Puntos: " + std::to_string(puntos));
+        InfoPuntostBox->setCaption("Puntos: " + std::to_string(puntos));
     }
     move(dir * speed);
 }

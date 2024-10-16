@@ -8,10 +8,10 @@ protected:
 	Vector3 dir;
 	Vector3 next_dir;
 	Laberinto* lab;
-
+	int vidas;
 public:
-	Personaje(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab, Vector3 dir, Vector3 next_dir);
-	Personaje(Vector3 pos, SceneNode* node, SceneManager* sceneManager, Laberinto* lab, Vector3 dir, Vector3 next_dir);
+	Personaje(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab, Vector3 dir, Vector3 next_dir, int _vidas);
+	Personaje(Vector3 pos, SceneNode* node, SceneManager* sceneManager, Laberinto* lab, Vector3 dir, Vector3 next_dir, int vidas);
 	virtual ~Personaje();
 	virtual void init() {};
 

@@ -103,8 +103,9 @@ void IG2App::setupScene(void){
 
     InfoTextBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoBox", "Game Info", 200, 50);
     InfoTextBox->setTextAlignment(Ogre::TextAreaOverlayElement::Right);
-    InfoLabel = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Puntos: 0", 200);  
-    laberinto->getHeroe()->setInfoLabel(InfoLabel);
+    InfoPuntos = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Puntos: 0", 200);
+    InfoVidas = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "Info", "Vidas: 3", 200);
+    laberinto->getHeroe()->setInfoLabel(InfoPuntos, InfoVidas);
    
     addInputListener(laberinto->getHeroe());
     for (size_t i = 0; i < laberinto->getVillanos().size(); i++)

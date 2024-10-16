@@ -29,7 +29,8 @@ protected:
     virtual void setupScene();
     
     OgreBites::TextBox* InfoTextBox;
-    OgreBites::Label* InfoLabel;
+    OgreBites::Label* InfoPuntos;
+    OgreBites::Label* InfoVidas;
     Laberinto* laberinto = nullptr;
 
     Ogre::SceneNode* mSinbadNode = nullptr;
