@@ -120,8 +120,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bloque.h" />
-    <ClInclude Include="Brazo.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Helices.h" />
     <ClInclude Include="Heroe.h" />
     <ClInclude Include="Hueco.h" />
     <ClInclude Include="IG2ApplicationContext.h" />
@@ -129,13 +129,13 @@
     <ClInclude Include="IG2Object.h" />
     <ClInclude Include="Laberinto.h" />
     <ClInclude Include="Muro.h" />
+    <ClInclude Include="Pala.h" />
     <ClInclude Include="Personaje.h" />
-    <ClInclude Include="Pierna.h" />
     <ClInclude Include="Villano.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bloque.cpp" />
-    <ClCompile Include="Brazo.cpp" />
+    <ClCompile Include="Helices.cpp" />
     <ClCompile Include="Heroe.cpp" />
     <ClCompile Include="Hueco.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
@@ -144,8 +144,8 @@
     <ClCompile Include="IG2Object.cpp" />
     <ClCompile Include="Laberinto.cpp" />
     <ClCompile Include="Muro.cpp" />
+    <ClCompile Include="Pala.cpp" />
     <ClCompile Include="Personaje.cpp" />
-    <ClCompile Include="Pierna.cpp" />
     <ClCompile Include="Villano.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
