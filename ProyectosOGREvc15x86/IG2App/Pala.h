@@ -7,9 +7,7 @@ public:
 		IG2Object(pos, node, sceneManager, "cube.mesh") {
 		mNode->scale(escala);
 	}
-	~Pala() {
-
-	}
+	~Pala() {}
 	virtual void init(){}
 };
 

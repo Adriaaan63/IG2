@@ -114,6 +114,7 @@ void IG2App::setupScene(void){
     //}
     SceneNode* villanoNode = mSM->getRootSceneNode()->createChildSceneNode("Villano1");
     Villano* villanoPrueba = new Villano(Vector3(0, 500, 0), villanoNode, mSM, laberinto);
+    addInputListener(villanoPrueba->getHelice());
 }
 
 
