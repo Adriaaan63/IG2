@@ -90,28 +90,30 @@ void IG2App::setupScene(void){
         // Creating the laberinto
         // The laberinto is created by loading from a file
     string nombreArchivo = "../stage1.txt";
-    laberinto = new Laberinto(nombreArchivo, mSM, mSM->getRootSceneNode(), mCamNode);
+   /* laberinto = new Laberinto(nombreArchivo, mSM, mSM->getRootSceneNode(), mCamNode);*/
 
     //------------------------------------------------------------------------
-    // Crear el plano que servirá de suelo
-    Plane plane(Vector3::UNIT_Y, -50);  
-    MeshManager::getSingleton().createPlane("ground", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane, (laberinto->getColumnas() - 1) * 100, (laberinto->getFilas() - 1) * 100, 20, 20, true, 1, 5, 5, Vector3::UNIT_Z);
-    Entity* entSuelo = mSM->createEntity("ground");
-    SceneNode* nodeSuelo = mSM->getRootSceneNode()->createChildSceneNode();
-    nodeSuelo->setPosition(laberinto->getColumnas() * 100 / 2, 0, laberinto->getFilas() * 100 / 2);
-    nodeSuelo->attachObject(entSuelo);
+    //// Crear el plano que servirá de suelo
+    //Plane plane(Vector3::UNIT_Y, -50);  
+    //MeshManager::getSingleton().createPlane("ground", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane, (laberinto->getColumnas() - 1) * 100, (laberinto->getFilas() - 1) * 100, 20, 20, true, 1, 5, 5, Vector3::UNIT_Z);
+    //Entity* entSuelo = mSM->createEntity("ground");
+    //SceneNode* nodeSuelo = mSM->getRootSceneNode()->createChildSceneNode();
+    //nodeSuelo->setPosition(laberinto->getColumnas() * 100 / 2, 0, laberinto->getFilas() * 100 / 2);
+    //nodeSuelo->attachObject(entSuelo);
 
-    InfoTextBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoBox", "Game Info", 200, 50);
-    InfoTextBox->setTextAlignment(Ogre::TextAreaOverlayElement::Right);
-    InfoPuntos = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Puntos: 0", 200);
-    InfoVidas = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "Info", "Vidas: 3", 200);
-    laberinto->getHeroe()->setInfoLabel(InfoPuntos, InfoVidas);
+    //InfoTextBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoBox", "Game Info", 200, 50);
+    //InfoTextBox->setTextAlignment(Ogre::TextAreaOverlayElement::Right);
+    //InfoPuntos = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Puntos: 0", 200);
+    //InfoVidas = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "Info", "Vidas: 3", 200);
+    //laberinto->getHeroe()->setInfoLabel(InfoPuntos, InfoVidas);
    
-    addInputListener(laberinto->getHeroe());
-    for (size_t i = 0; i < laberinto->getVillanos().size(); i++)
-    {
-        addInputListener(laberinto->getVillanos()[i]);
-    }
+    //addInputListener(laberinto->getHeroe());
+    //for (size_t i = 0; i < laberinto->getVillanos().size(); i++)
+    //{
+    //    addInputListener(laberinto->getVillanos()[i]);
+    //}
+    SceneNode* villanoNode = mSM->getRootSceneNode()->createChildSceneNode("Villano1");
+    Villano* villanoPrueba = new Villano(Vector3(0, 500, 0), villanoNode, mSM, laberinto);
 }
 
 

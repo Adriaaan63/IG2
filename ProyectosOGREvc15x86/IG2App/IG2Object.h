@@ -48,7 +48,7 @@ class IG2Object : public OgreBites::InputListener {
         /**
          * Abtstract method for initialization purposes                 
          */
-        virtual void init () = 0;
+        virtual void init() {};
     
         /**
          * Sets an initial position for this element

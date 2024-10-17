@@ -4,6 +4,7 @@
 #include "IG2ApplicationContext.h"
 #include "Laberinto.h"
 #include "Heroe.h"
+#include "Villano.h"
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreTrays.h>

@@ -2,6 +2,20 @@
 #include "Laberinto.h"
 void Villano::createVillano() {
     
+
+    SceneNode* nodeCuerpo = mSM->getRootSceneNode()->createChildSceneNode("cuerpo");
+    IG2Object* cuerpo = new IG2Object(Vector3(0, 0, 0), nodeCuerpo, mSM, "Barrel.mesh");
+    cuerpo->setScale(Vector3(20, 20, 20));
+    bodyVillano.push_back(cuerpo);
+
+    SceneNode* nodeHelice1 = mSM->getRootSceneNode()->createChildSceneNode("helice1");
+    Helices* helice1 = new Helices(Vector3(cuerpo->getPosition().x + 55, 0, 0), nodeHelice1, mSM, 8, Vector3(0.5, 0.5, 0.5),1);
+    bodyVillano.push_back(helice1);
+    SceneNode* nodeHelice2 = mSM->getRootSceneNode()->createChildSceneNode("helice2");
+    Helices* helice2 = new Helices(Vector3(cuerpo->getPosition().x - 55, 0, 0), nodeHelice2, mSM, 8, Vector3(0.5, 0.5, 0.5),2);
+    bodyVillano.push_back(helice2);
+
+
 }
 void Villano::frameRendered(const Ogre::FrameEvent& evt) {
     if (mNode == nullptr || lab == nullptr) {
