@@ -131,6 +131,8 @@
     <ClInclude Include="Muro.h" />
     <ClInclude Include="Pala.h" />
     <ClInclude Include="Personaje.h" />
+    <ClInclude Include="Pinguino.h" />
+    <ClInclude Include="Rueda.h" />
     <ClInclude Include="Villano.h" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +148,8 @@
     <ClCompile Include="Muro.cpp" />
     <ClCompile Include="Pala.cpp" />
     <ClCompile Include="Personaje.cpp" />
+    <ClCompile Include="Pinguino.cpp" />
+    <ClCompile Include="Rueda.cpp" />
     <ClCompile Include="Villano.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

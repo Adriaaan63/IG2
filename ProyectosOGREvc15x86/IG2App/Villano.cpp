@@ -13,19 +13,17 @@ void Villano::createVillano() {
     Helices* helice2 = new Helices(Vector3(-2.5, 0, 0), mNode, mSM, 8, Vector3(0.1, 0.1, 0.1), 2);
     bodyVillano.push_back(helice2);
 
-  /*
-    IG2Object* pingu = new IG2Object(Vector3(0, 0, 0), mNode, mSM, "penguin.mesh");
-    pingu->setScale(Vector3(0.2, 0.2, 0.2));
-    bodyVillano.push_back(pingu);*/
+  
+    Pinguino* pingu = new Pinguino(Vector3(0, 5, 0), mNode, mSM, Vector3(0.1, 0.1, 0.1));
+    
+    bodyVillano.push_back(pingu);
 
    
-    /*IG2Object* rueda1 = new IG2Object(Vector3( - 2.5, -6, 0), mNode, mSM, "sphere.mesh");
-    rueda1->setScale(Vector3(0.2, 0.2, 0.2));
+    Rueda* rueda1 = new Rueda(Vector3( - 2, -4, 0), mNode, mSM, Vector3(0.02, 0.02, 0.02),1);
     bodyVillano.push_back(rueda1);
    
-    IG2Object* rueda2 = new IG2Object(Vector3(+2.5,- 6,0), mNode, mSM, "sphere.mesh");
-    rueda2->setScale(Vector3(0.2, 0.2, 0.2));
-    bodyVillano.push_back(rueda2);*/
+    Rueda* rueda2 = new Rueda(Vector3(2,- 4,0), mNode, mSM, Vector3(0.02, 0.02, 0.02),2);
+    bodyVillano.push_back(rueda2);
 
 }
 

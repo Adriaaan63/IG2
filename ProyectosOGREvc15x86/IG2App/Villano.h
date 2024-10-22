@@ -2,6 +2,8 @@
 #include "Personaje.h"
 #include "OgreAxisAlignedBox.h"
 #include "Helices.h"
+#include "Pinguino.h"
+#include "Rueda.h"
 
 
 class Villano : public Personaje
