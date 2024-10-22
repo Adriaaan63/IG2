@@ -9,7 +9,7 @@ class Villano : public Personaje
 private:
 	std::vector<IG2Object*> bodyVillano;
 	void createVillano();
-	Helices* helice1;
+	/*Helices* helice1;*/
 
 public:
 	Villano(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab) :
@@ -29,8 +29,8 @@ public:
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
 	Vector3 nuevaDireccion();
-	Helices* getHelice() const{
+	/*Helices* getHelice() const{
 		return helice1;
-	}
+	}*/
 };
 
