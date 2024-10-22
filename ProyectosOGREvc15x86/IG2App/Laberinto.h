@@ -70,6 +70,12 @@ public:
                     villanos.push_back(new Villano(pos, parentNode->createChildSceneNode(), sceneManager, "ogrehead.mesh", this));
                     
                 }
+                else if (linea[j] == 'V') {
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
+                    villanos.push_back(new Villano(pos, parentNode->createChildSceneNode(), sceneManager, this));
+
+                }
                 
             }
         }
