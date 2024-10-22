@@ -101,11 +101,17 @@ void IG2App::setupScene(void){
     entSuelo->setMaterialName("materialSuelo");
     nodeSuelo->attachObject(entSuelo);
 
-    InfoTextBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoBox", "Game Info", 200, 50);
-    InfoTextBox->setTextAlignment(Ogre::TextAreaOverlayElement::Right);
+    InfoTitle = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Game Info", 200);
+    
+   InfoPlayer = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoPlayer", "Info", 200, 120);
+   InfoPlayer->appendText("Puntos:" + to_string(0));
+   InfoPlayer->appendText("Vidas:" + to_string(laberinto->getHeroe()->getVidas()));
+
+    /*InfoTextBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoBox", "Game Info", 200, 50);*/
+   /* InfoTextBox->setTextAlignment(Ogre::TextAreaOverlayElement::Right);
     InfoPuntos = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Puntos: 0", 200);
-    InfoVidas = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "Info", "Vidas: 3", 200);
-    laberinto->getHeroe()->setInfoLabel(InfoPuntos, InfoVidas);
+    InfoVidas = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "Info", "Vidas: 3", 200);*/
+    laberinto->getHeroe()->setInfoText(InfoPlayer);
    
     addInputListener(laberinto->getHeroe());
     for (size_t i = 0; i < laberinto->getVillanos().size(); i++)

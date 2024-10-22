@@ -32,6 +32,10 @@ protected:
     OgreBites::TextBox* InfoTextBox;
     OgreBites::Label* InfoPuntos;
     OgreBites::Label* InfoVidas;
+
+    OgreBites::Label* InfoTitle;
+    OgreBites::TextBox* InfoPlayer;
+
     Laberinto* laberinto = nullptr;
 
     Ogre::SceneNode* mSinbadNode = nullptr;

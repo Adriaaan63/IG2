@@ -16,6 +16,7 @@ public:
 	virtual void init() {};
 
 	void giro();
+	int getVidas() const { return vidas; };
 
 	/*virtual void frameRendered(const Ogre::FrameEvent& evt) const = 0;*/
 };
