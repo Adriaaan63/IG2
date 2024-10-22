@@ -8,10 +8,10 @@ Helices::Helices(Vector3 pos, SceneNode* node, SceneManager* sceneManager, int n
     for (int i = 0; i < numPalas; ++i) {
         // Crear nodo para la pala
         /*SceneNode* nodoPala = mNode->createChildSceneNode(to_string(n) + "pala" + std::to_string(i));*/
-        float radio = 50.0f;
+        float radio = 10.0f;
         Vector3 posePala = { radio * Ogre::Math::Sin(Ogre::Degree(i * anguloEntrePalas)),
             0, radio * Ogre::Math::Cos(Ogre::Degree(i * anguloEntrePalas)) };
-        Pala* nuevaPala = new Pala(posePala, mNode, sceneManager, Vector3(1.5, 0.1, 0.5),n,i);
+        Pala* nuevaPala = new Pala(posePala, mNode, sceneManager, Vector3(0.5, 0.05, 0.2),n,i);
         nuevaPala->getNode()->yaw(Ogre::Degree(i * anguloEntrePalas + 90));
         palas.push_back(nuevaPala);
     }
