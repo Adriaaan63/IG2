@@ -5,8 +5,9 @@ class Bloque : public IG2Object
 private:
     bool traspasable;
 public:
-    Bloque(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, bool traspasable)
-        : IG2Object(pos, node, sceneManager, mesh), traspasable(traspasable)  {}
+    Bloque(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, bool _traspasable)
+        : IG2Object(pos, node, sceneManager, mesh), traspasable(_traspasable)  {
+    }
     ~Bloque() {
 
     }

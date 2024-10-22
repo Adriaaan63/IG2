@@ -49,7 +49,6 @@ void IG2App::setup(void){
 }
 
 void IG2App::setupScene(void){
-    
     //------------------------------------------------------------------------
     // Creating the camera
     
@@ -99,6 +98,7 @@ void IG2App::setupScene(void){
     Entity* entSuelo = mSM->createEntity("ground");
     SceneNode* nodeSuelo = mSM->getRootSceneNode()->createChildSceneNode();
     nodeSuelo->setPosition(laberinto->getColumnas() * 100 / 2, 0, laberinto->getFilas() * 100 / 2);
+    entSuelo->setMaterialName("materialSuelo");
     nodeSuelo->attachObject(entSuelo);
 
     InfoTextBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoBox", "Game Info", 200, 50);

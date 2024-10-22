@@ -17,6 +17,7 @@ public:
         palas.clear();
     }
 
-    virtual void init() {}
+    virtual void init() {
+    }
     virtual void frameRendered(const Ogre::FrameEvent& evt);
 };

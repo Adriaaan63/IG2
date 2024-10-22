@@ -51,12 +51,14 @@ public:
                 {
                     //Muros
                     bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager,"cube.mesh", false);
+                  /*  bloques[i][j]->setMaterialName("materialMuro");*/
                 }
                 else if (linea[j] == 'o')
                 {
                     //Hueco perlas
                     bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
+                    /*bloques[i][j]->setMaterialName("materialPerla");*/
                 }
                 else if (linea[j] == 'h') {
                     bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);

@@ -1,0 +1,48 @@
+material materialPerla
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.3 0.8 0.3
+
+			texture_unit
+			{
+				texture droplet.PNG				
+			}
+		}
+	}
+}
+
+material materialSuelo
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.3 0.8 0.3
+
+			texture_unit
+			{
+				texture grass.PNG				
+			}
+		}
+	}
+}
+
+material materialMuro
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.3 0.8 0.3
+
+			texture_unit
+			{
+				texture floor_diffuse.PNG				
+			}
+		}
+	}
+}
+
