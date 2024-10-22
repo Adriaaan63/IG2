@@ -129,6 +129,9 @@ class IG2Object : public OgreBites::InputListener {
          */
         static void addListener(IG2Object* entidad){ appListeners.push_back(entidad); };
                     
+        SceneNode* getNode() const {
+            return mNode;
+        }
     protected:
     
         // Scene node representing this element in the scene

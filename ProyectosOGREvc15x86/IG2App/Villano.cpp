@@ -6,25 +6,25 @@ void Villano::createVillano() {
     bodyVillano.push_back(cuerpo);
 
    /* SceneNode* nodeHelice1 = mNode->createChildSceneNode("helice1");*/
-    Helices* helice1 = new Helices(Vector3(cuerpo->getPosition().x + 55, cuerpo->getPosition().y, cuerpo->getPosition().z), mNode, mSM, 8, Vector3(20, 20, 20), 1);
+    Helices* helice1 = new Helices(Vector3(cuerpo->getPosition().x + 55, cuerpo->getPosition().y, cuerpo->getPosition().z), mNode, mSM, 8, Vector3(0.5, 0.5, 0.5), 1);
     bodyVillano.push_back(helice1);
 
-   /* SceneNode* nodeHelice2 = mNode->createChildSceneNode("helice2");
-    Helices* helice2 = new Helices(Vector3(cuerpo->getPosition().x - 55, cuerpo->getPosition().y, cuerpo->getPosition().z), nodeHelice2, mSM, 8, Vector3(0.5, 0.5, 0.5),2);
+    
+    Helices* helice2 = new Helices(Vector3(cuerpo->getPosition().x - 55, cuerpo->getPosition().y, cuerpo->getPosition().z), mNode, mSM, 8, Vector3(0.5, 0.5, 0.5),2);
     bodyVillano.push_back(helice2);
 
-    SceneNode* nodePingu = mNode->createChildSceneNode("pingu");
-    IG2Object* pingu = new IG2Object(Vector3(cuerpo->getPosition().x, cuerpo->getPosition().y + 75, cuerpo->getPosition().z), nodePingu, mSM, "penguin.mesh");
+  
+    IG2Object* pingu = new IG2Object(Vector3(cuerpo->getPosition().x, cuerpo->getPosition().y + 75, cuerpo->getPosition().z), mNode, mSM, "penguin.mesh");
     bodyVillano.push_back(pingu);
 
-    SceneNode* nodeRueda1 = mNode->createChildSceneNode("rueda1");
-    IG2Object* rueda1 = new IG2Object(Vector3(cuerpo->getPosition().x -25, cuerpo->getPosition().y - 60, cuerpo->getPosition().z), nodeRueda1, mSM, "sphere.mesh");
+   
+    IG2Object* rueda1 = new IG2Object(Vector3(cuerpo->getPosition().x -25, cuerpo->getPosition().y - 60, cuerpo->getPosition().z), mNode, mSM, "sphere.mesh");
     rueda1->setScale(Vector3(0.2, 0.2, 0.2));
     bodyVillano.push_back(rueda1);
-    SceneNode* nodeRueda2 = mNode->createChildSceneNode("rueda2");
-    IG2Object* rueda2 = new IG2Object(Vector3(cuerpo->getPosition().x + 25, cuerpo->getPosition().y - 60, cuerpo->getPosition().z), nodeRueda2, mSM, "sphere.mesh");
+   
+    IG2Object* rueda2 = new IG2Object(Vector3(cuerpo->getPosition().x + 25, cuerpo->getPosition().y - 60, cuerpo->getPosition().z), mNode, mSM, "sphere.mesh");
     rueda2->setScale(Vector3(0.2, 0.2, 0.2));
-    bodyVillano.push_back(rueda2);*/
+    bodyVillano.push_back(rueda2);
 
 }
 

@@ -18,7 +18,7 @@ public:
 	Villano(Vector3 pos, SceneNode* node, SceneManager* sceneManager, Laberinto* lab) :
 		Personaje(pos, node, sceneManager, lab, Vector3(0, 0, 0), Vector3(0, 0, 0), 1) {
 		createVillano();
-		mNode->scale(Vector3(0.5, 0.5, 0.5));
+		
 	};
 
 	~Villano() {
