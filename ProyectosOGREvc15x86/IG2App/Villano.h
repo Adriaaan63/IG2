@@ -31,5 +31,9 @@ public:
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
 	Vector3 nuevaDireccion();
+
+	Vector3 getInitialPos() {
+		return initialPosition;
+	}
 };
 

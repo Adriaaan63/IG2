@@ -46,10 +46,13 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
 
     for (int i = 0; i < lab->getVillanos().size(); i++)
     {
-        if (lab->getVillanos()[i]->getAABB().intersects(this->getAABB()) && this->getPosition() != initialPosition) {
+        if (lab->getVillanos()[i]->getAABB().intersects(this->getAABB())) {
             vidas -= 1;
             updateText();
             this->setPosition(initialPosition);
+            for (int i = 0; i < lab->getVillanos().size(); i++) {
+                lab->getVillanos()[i]->setPosition(lab->getVillanos()[i]->getInitialPos());
+            }
         }
     }
     move(dir * speed);
