@@ -16,10 +16,14 @@ private:
     std::vector<std::vector<Bloque*>> bloques;
     Heroe* heroe;
     std::vector<Villano*> villanos;
+    string materialSuelo;
+    string materialPerla;
+    string materialMuro;
 public:
     Laberinto(const std::string& nombreArchivo, SceneManager* sceneManager, SceneNode* parentNode, SceneNode* camNode)
     {
         cargarDesdeFichero(nombreArchivo, sceneManager, parentNode);
+        createFloor(sceneManager);
         ajustarCamara(camNode);
     }
     ~Laberinto(){}
@@ -33,7 +37,7 @@ public:
             return;
         }
 
-        archivo >> filas >> columnas;
+        archivo >> filas >> columnas >> materialSuelo >> materialMuro >> materialPerla;
         archivo.ignore();  
 
         bloques.resize(filas, std::vector<Bloque*>(columnas, nullptr));
@@ -50,30 +54,28 @@ public:
                 if (linea[j] == 'x')
                 {
                     //Muros
-                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager,"cube.mesh", false);
-                  /*  bloques[i][j]->setMaterialName("materialMuro");*/
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager,"cube.mesh", false, materialMuro);
                 }
                 else if (linea[j] == 'o')
                 {
                     //Hueco perlas
-                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true, materialPerla);
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
-                    /*bloques[i][j]->setMaterialName("materialPerla");*/
                 }
                 else if (linea[j] == 'h') {
-                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true, materialPerla);
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
                     heroe = new Heroe(pos, parentNode->createChildSceneNode(), sceneManager, "Sinbad.mesh", this);
                     heroe->setScale(Vector3(10.0, 10.0, 10.0));
                 }
                 else if (linea[j] == 'v') {
-                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true, materialPerla);
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
                     villanos.push_back(new Villano(pos, parentNode->createChildSceneNode(), sceneManager, "ogrehead.mesh", this));
                     
                 }
                 else if (linea[j] == 'V') {
-                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true);
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true, materialPerla);
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
                     villanos.push_back(new Villano(pos, parentNode->createChildSceneNode(), sceneManager, this));
 
@@ -135,5 +137,6 @@ public:
         }
         return posiblesDirecciones;
     }
+    void createFloor(SceneManager* sceneManager);
 };
 

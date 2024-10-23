@@ -46,3 +46,19 @@ material materialMuro
 	}
 }
 
+material materialSuelo2
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.3 0.8 0.3
+
+			texture_unit
+			{
+				texture spotlight_image.png				
+			}
+		}
+	}
+}
+

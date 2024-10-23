@@ -1,5 +1,8 @@
 19
 19
+materialSuelo2
+materialMuro
+materialPerla
 xxxxxxxxxxxxxxxxxxx
 xooooooooxoooooooox
 xoxxoxxxoxoxxxoxxox
