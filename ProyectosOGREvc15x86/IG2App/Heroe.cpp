@@ -26,6 +26,9 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
     if (mNode == nullptr || lab == nullptr) {
         return;
     }
+    if (light != nullptr) {
+        light->setPosition(getPosition().x, 1000, getPosition().z);
+    }
     if (fmod(getPosition().x, TILE_WIDTH) == 0 && fmod(getPosition().z, TILE_HEIGHT) == 0) {
         giro();
     }
@@ -50,6 +53,7 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
         }
     }
     move(dir * speed);
+    
 }
 
 void Heroe::updateText() {

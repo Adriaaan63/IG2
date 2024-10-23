@@ -11,6 +11,7 @@ private:
     int puntos;
     int speed;
     OgreBites::TextBox* TextInfoPlayer;  
+    SceneNode* light;
 public:
     Heroe(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab) :
         Personaje(pos, node, sceneManager, mesh, lab, Vector3(0, 0, 1), Vector3(0, 0, 1), 3),
@@ -28,4 +29,5 @@ public:
         TextInfoPlayer = TextInfoPlayer_;
     }
     void updateText();
+    void setLight(SceneNode* newLight) { light = newLight; };
 };
