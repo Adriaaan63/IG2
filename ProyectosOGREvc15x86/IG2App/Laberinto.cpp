@@ -9,3 +9,13 @@ void Laberinto::createFloor(SceneManager* sceneManager) {
     entSuelo->setMaterialName(materialSuelo);
     nodeSuelo->attachObject(entSuelo);
 }
+void Laberinto::createLightHeroe(SceneManager* sceneManager) {
+    light = sceneManager->createLight("Luz Foco");
+    light->setType(Ogre::Light::LT_SPOTLIGHT);
+    light->setDiffuseColour(Ogre::ColourValue(0.8f, 0.8f, 0.8f));
+    light->setCastShadows(true);
+    /* luzFoco->setDirection(Ogre::Vector3(1, -1, 0));*/
+    light->setSpotlightInnerAngle(Ogre::Degree(90.0f));
+    light->setSpotlightOuterAngle(Ogre::Degree(90.0f));
+    light->setSpotlightFalloff(5.0f);
+}

@@ -19,14 +19,20 @@ private:
     string materialSuelo;
     string materialPerla;
     string materialMuro;
+    int typeLight;
+    Light* light;
+    
 public:
     Laberinto(const std::string& nombreArchivo, SceneManager* sceneManager, SceneNode* parentNode, SceneNode* camNode)
     {
         cargarDesdeFichero(nombreArchivo, sceneManager, parentNode);
         createFloor(sceneManager);
         ajustarCamara(camNode);
+        createLightHeroe(sceneManager);
     }
     ~Laberinto(){}
+    void createFloor(SceneManager* sceneManager);
+    void createLightHeroe(SceneManager* sceneManager);
     void cargarDesdeFichero(const std::string& nombreArchivo, SceneManager* sceneManager, SceneNode* parentNode)
     {
         std::ifstream archivo(nombreArchivo);
@@ -37,7 +43,7 @@ public:
             return;
         }
 
-        archivo >> filas >> columnas >> materialSuelo >> materialMuro >> materialPerla;
+        archivo >> filas >> columnas >> materialSuelo >> materialMuro >> materialPerla >> typeLight;
         archivo.ignore();  
 
         bloques.resize(filas, std::vector<Bloque*>(columnas, nullptr));
@@ -121,6 +127,10 @@ public:
     int getColumnas() {
         return columnas;
     }
+    Light* getLightHeroe() const {
+        return light;
+    };
+
     std::vector<Vector3> getDireccionesTraspasables(Vector3 posBloque) const {
         std::vector<Vector3> posiblesDirecciones;
         if (getBloque(Vector3(posBloque.x - TILE_WIDTH, 0, posBloque.z))->esTraspasable()) {
@@ -137,6 +147,6 @@ public:
         }
         return posiblesDirecciones;
     }
-    void createFloor(SceneManager* sceneManager);
+   
 };
 

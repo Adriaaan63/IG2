@@ -84,19 +84,12 @@ void IG2App::setupScene(void){
     mSM->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
 
    //mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
-    Light* luzFoco = mSM->createLight("Luz Foco");
-    luzFoco->setType(Ogre::Light::LT_SPOTLIGHT);
-    luzFoco->setDiffuseColour(Ogre::ColourValue(0.8f, 0.8f, 0.8f));
-    luzFoco->setCastShadows(true);
-   /* luzFoco->setDirection(Ogre::Vector3(1, -1, 0));*/
-    luzFoco->setSpotlightInnerAngle(Ogre::Degree(90.0f));
-    luzFoco->setSpotlightOuterAngle(Ogre::Degree(90.0f));
-    luzFoco->setSpotlightFalloff(5.0f);
-
+    
+    Light* light = laberinto->getLightHeroe();
     mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
     mLightNode->setPosition(laberinto->getHeroe()->getPosition().x, 1000, laberinto->getHeroe()->getPosition().z);
     mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
-    mLightNode->attachObject(luzFoco);
+    mLightNode->attachObject(light);
     laberinto->getHeroe()->setLight(mLightNode);
 
    InfoTitle = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Game Info", 200);
