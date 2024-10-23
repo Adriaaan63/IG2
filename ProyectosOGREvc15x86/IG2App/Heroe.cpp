@@ -38,14 +38,12 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
     if (lab->getBloque(getPosition())->getAABB().intersects(this->getAABB()) && lab->getBloque(getPosition())->isVisible()) {
         puntos += 10;
         lab->getBloque(getPosition())->setVisible(false);
-        cout << puntos << endl;
-        /*InfoPuntostBox->setCaption("Puntos: " + std::to_string(puntos));*/
         updateText();
     }
 
     for (int i = 0; i < lab->getVillanos().size(); i++)
     {
-        if (lab->getVillanos()[i]->getAABB().intersects(this->getAABB())) {
+        if (lab->getVillanos()[i]->getAABB().intersects(this->getAABB()) && this->getPosition() != initialPosition) {
             vidas -= 1;
             updateText();
             this->setPosition(initialPosition);
