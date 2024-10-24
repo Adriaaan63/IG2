@@ -11,11 +11,23 @@ void Laberinto::createFloor(SceneManager* sceneManager) {
 }
 void Laberinto::createLightHeroe(SceneManager* sceneManager) {
     light = sceneManager->createLight("Luz Foco");
-    light->setType(Ogre::Light::LT_SPOTLIGHT);
-    light->setDiffuseColour(Ogre::ColourValue(0.8f, 0.8f, 0.8f));
-    light->setCastShadows(true);
-    /* luzFoco->setDirection(Ogre::Vector3(1, -1, 0));*/
-    light->setSpotlightInnerAngle(Ogre::Degree(90.0f));
-    light->setSpotlightOuterAngle(Ogre::Degree(90.0f));
-    light->setSpotlightFalloff(5.0f);
+    switch (typeLight) {
+    case 0:
+        light->setType(Ogre::Light::LT_POINT);  // Luz puntual
+        break;
+    case 1:
+        light->setType(Ogre::Light::LT_DIRECTIONAL);  // Luz direccional
+        light->setDiffuseColour(0.5, 0.5, 0.5);
+        break;
+    case 2:
+        light->setType(Ogre::Light::LT_SPOTLIGHT);  // Luz tipo foco
+        light->setDiffuseColour(Ogre::ColourValue(0.8f, 0.8f, 0.8f));
+        light->setCastShadows(true);
+        /* luzFoco->setDirection(Ogre::Vector3(1, -1, 0));*/
+        light->setSpotlightInnerAngle(Ogre::Degree(90.0f));
+        light->setSpotlightOuterAngle(Ogre::Degree(90.0f));
+        light->setSpotlightFalloff(5.0f);
+        break;
+    }
+    
 }
