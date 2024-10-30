@@ -52,6 +52,7 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
             this->setPosition(initialPosition);
             for (int i = 0; i < lab->getVillanos().size(); i++) {
                 lab->getVillanos()[i]->setPosition(lab->getVillanos()[i]->getInitialPos());
+                dir = Vector3(0, 0, 0);
             }
         }
     }
