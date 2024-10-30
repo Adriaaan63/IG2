@@ -6,23 +6,23 @@ void Villano::createVillano() {
     bodyVillano.push_back(cuerpo);
 
    /* SceneNode* nodeHelice1 = mNode->createChildSceneNode("helice1");*/
-    Helices* helice1 = new Helices(Vector3(2.5, 0, 0), mNode, mSM, 8, Vector3(0.1, 0.1, 0.1), 1);
+    Helices* helice1 = new Helices(Vector3(2.5, 0, 0), mNode, mSM, 8, Vector3(0.1, 0.1, 0.1), 1, n);
     bodyVillano.push_back(helice1);
 
     
-    Helices* helice2 = new Helices(Vector3(-2.5, 0, 0), mNode, mSM, 8, Vector3(0.1, 0.1, 0.1), 2);
+    Helices* helice2 = new Helices(Vector3(-2.5, 0, 0), mNode, mSM, 8, Vector3(0.1, 0.1, 0.1), 2, n);
     bodyVillano.push_back(helice2);
 
   
-    Pinguino* pingu = new Pinguino(Vector3(0, 5, 0), mNode, mSM, Vector3(0.1, 0.1, 0.1));
+    Pinguino* pingu = new Pinguino(Vector3(0, 5, 0), mNode, mSM, Vector3(0.1, 0.1, 0.1), n);
     
     bodyVillano.push_back(pingu);
 
    
-    Rueda* rueda1 = new Rueda(Vector3( - 2, -4, 0), mNode, mSM, Vector3(0.02, 0.02, 0.02),1);
+    Rueda* rueda1 = new Rueda(Vector3( - 2, -4, 0), mNode, mSM, Vector3(0.02, 0.02, 0.02),1, n);
     bodyVillano.push_back(rueda1);
    
-    Rueda* rueda2 = new Rueda(Vector3(2,- 4,0), mNode, mSM, Vector3(0.02, 0.02, 0.02),2);
+    Rueda* rueda2 = new Rueda(Vector3(2,- 4,0), mNode, mSM, Vector3(0.02, 0.02, 0.02),2, n);
     bodyVillano.push_back(rueda2);
 
 }

@@ -5,7 +5,7 @@ materialMuro
 materialPerla
 2
 xxxxxxxxxxxxxxxxxxx
-xooooooooxoooooooox
+xoooovoooxoooooooox
 xoxxoxxxoxoxxxoxxox
 xooooooooooooooooox
 xoxxoxoxxxxxoxoxxox
@@ -20,6 +20,6 @@ xoxxoxxxoxoxxxoxxox
 xooxoooooooooooxoox
 xxoxoxoxxxxxoxoxoxx
 xooooxoooxoooxoooox
-xoxxxxxxoxoxxxxxxox
-xooooooooxoooooooox
+xoxxxxxxVxoxxxxxxox
+xooooooooxooooovoox
 xxxxxxxxxxxxxxxxxxx

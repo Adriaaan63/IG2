@@ -21,6 +21,7 @@ private:
     string materialMuro;
     int typeLight;
     Light* light;
+    int n_villano = 0;
     
 public:
     Laberinto(const std::string& nombreArchivo, SceneManager* sceneManager, SceneNode* parentNode, SceneNode* camNode)
@@ -83,8 +84,8 @@ public:
                 else if (linea[j] == 'V') {
                     bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true, materialPerla);
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
-                    villanos.push_back(new Villano(pos, parentNode->createChildSceneNode(), sceneManager, this));
-
+                    villanos.push_back(new Villano(pos, parentNode->createChildSceneNode(), sceneManager, this, n_villano));
+                    n_villano++;
                 }
                 
             }

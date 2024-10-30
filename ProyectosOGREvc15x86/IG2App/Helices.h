@@ -8,7 +8,7 @@ private:
     std::vector<Pala*> palas;
 
 public:
-    Helices(Vector3 pos, SceneNode* node, SceneManager* sceneManager, int numPalas, Vector3 escala, int n);
+    Helices(Vector3 pos, SceneNode* node, SceneManager* sceneManager, int numPalas, Vector3 escala, int n, int n_villano);
 
     ~Helices() {
         for (auto& e : palas) {

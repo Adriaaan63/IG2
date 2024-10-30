@@ -8,7 +8,7 @@ material materialPerla
 
 			texture_unit
 			{
-				texture droplet.png				
+				texture tusk.jpg				
 			}
 		}
 	}
