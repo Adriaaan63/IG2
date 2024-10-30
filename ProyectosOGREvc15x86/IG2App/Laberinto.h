@@ -100,8 +100,8 @@ public:
     std::vector<Villano*> getVillanos()const { return villanos; };
     void ajustarCamara(SceneNode* camNode) {
         float alturaCamara = max(filas, columnas) *100;  
-        float centroX = (filas - 1) * 100 / 2.0f; 
-        float centroZ = (columnas - 1) * 100 / 2.0f; 
+        float centroX = (filas - 1) * TILE_WIDTH / 2.0f; 
+        float centroZ = (columnas - 1) * TILE_WIDTH / 2.0f; 
 
         camNode->setPosition(centroX, alturaCamara, centroZ / 0.35f);
         

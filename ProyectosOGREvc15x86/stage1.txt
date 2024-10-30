@@ -3,7 +3,7 @@
 materialSuelo
 materialMuro
 materialPerla
-1
+2
 xxxxxxxxxxxxxxxxxxx
 xooooooooxoooooooox
 xoxxoxxxoxoxxxoxxox

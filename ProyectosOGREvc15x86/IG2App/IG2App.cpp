@@ -61,8 +61,8 @@ void IG2App::setupScene(void){
     mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
     mCamNode->attachObject(cam);
 
-    //mCamNode->setPosition(0, 0, 1000); //posicion de la camara
-    //mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);//punto donde mira la camara
+    mCamNode->setPosition(0, 0, 1000); //posicion de la camara
+    mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);//punto donde mira la camara
     
     // and tell it to render into the main window
     Viewport* vp = getRenderWindow()->addViewport(cam);
@@ -80,7 +80,7 @@ void IG2App::setupScene(void){
     string nombreArchivo = "../stage1.txt";
     laberinto = new Laberinto(nombreArchivo, mSM, mSM->getRootSceneNode(), mCamNode);
     //------------------------------------------------------------------------
-   // Creating the light
+    // Creating the light
     mSM->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
 
    //mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
@@ -98,10 +98,6 @@ void IG2App::setupScene(void){
    InfoPlayer->appendText("Puntos:" + to_string(0));
    InfoPlayer->appendText("Vidas:" + to_string(laberinto->getHeroe()->getVidas()));
 
-    /*InfoTextBox = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoBox", "Game Info", 200, 50);*/
-   /* InfoTextBox->setTextAlignment(Ogre::TextAreaOverlayElement::Right);
-    InfoPuntos = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Puntos: 0", 200);
-    InfoVidas = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "Info", "Vidas: 3", 200);*/
     laberinto->getHeroe()->setInfoText(InfoPlayer);
    
     addInputListener(laberinto->getHeroe());
@@ -109,9 +105,6 @@ void IG2App::setupScene(void){
     {
         addInputListener(laberinto->getVillanos()[i]);
     }
-   /* SceneNode* villanoNode = mSM->getRootSceneNode()->createChildSceneNode("Villano1");
-    Villano* villanoPrueba = new Villano(Vector3(0, 500, 0), villanoNode, mSM, laberinto);
-    addInputListener(villanoPrueba);*/
 }
 
 
