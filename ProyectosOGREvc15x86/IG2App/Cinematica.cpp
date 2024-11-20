@@ -6,14 +6,13 @@ void Cinematica::createFloor(SceneManager* sceneManager, SceneNode* camNode) {
     Entity* entSuelo = sceneManager->createEntity("ground1");
     nodeSuelo = sceneManager->getRootSceneNode()->createChildSceneNode();
     nodeSuelo->setPosition(camNode->getPosition().x, camNode->getPosition().y - 50, camNode->getPosition().z - 40);
-    nodeSuelo->pitch(Degree(-20));
+    /*nodeSuelo->pitch(Degree(-20));*/
     entSuelo->setMaterialName("materialMuro");
     nodeSuelo->attachObject(entSuelo);
 
 }
 void Cinematica::createLightCinematica(SceneManager* sceneManager) {
     light = sceneManager->createLight("Luz Foco");
-   
     light->setType(Ogre::Light::LT_DIRECTIONAL);  // Luz direccional
     light->setDiffuseColour(0.5, 0.5, 0.5);
         
@@ -21,7 +20,7 @@ void Cinematica::createLightCinematica(SceneManager* sceneManager) {
 
 }
 void Cinematica::setVisibleCinematica(bool visible) {
-    villanos->setVisible(visible);
+   /* villanos->setVisible(visible);*/
     heroe->setVisible(visible);
     nodeSuelo->setVisible(visible);
 }

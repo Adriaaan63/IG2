@@ -11,6 +11,9 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
     }
     else if (evt.keysym.sym == SDLK_s) {
         laberinto->setVisibleLaberinto(true);
+        cinematica->setVisibleCinematica(false);
+        mLightNode1->setVisible(false);
+        mSM->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
     }
     
   return true;
@@ -69,7 +72,7 @@ void IG2App::setupScene(void){
     
     // and tell it to render into the main window
     Viewport* vp = getRenderWindow()->addViewport(cam);
-    vp->setBackgroundColour(Ogre::ColourValue(0.7, 0.8, 0.9));
+    vp->setBackgroundColour(Ogre::ColourValue(0, 0, 0));
 
     mCamMgr = new OgreBites::CameraMan(mCamNode);
     addInputListener(mCamMgr);
@@ -88,14 +91,14 @@ void IG2App::setupScene(void){
     cinematica = new Cinematica(mSM, mSM->getRootSceneNode(), mCamNode);
     Light* luz = mSM->createLight("Luz");
     luz->setType(Ogre::Light::LT_DIRECTIONAL);
-    luz->setDiffuseColour(0.5, 0.5, 0.5);
+    luz->setDiffuseColour(1, 1, 1);
 
     mLightNode1 = mSM->getRootSceneNode()->createChildSceneNode("nLuz1");
     //mLightNode = mCamNode->createChildSceneNode("nLuz");
     mLightNode1->attachObject(luz);
     mLightNode1->setDirection(Ogre::Vector3(0, -1,0));
     // Creating the light
-    mSM->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
+   
 
    //mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
     
@@ -114,6 +117,7 @@ void IG2App::setupScene(void){
 
     laberinto->getHeroe()->setInfoText(InfoPlayer);
    
+    addInputListener(cinematica->getHeroe());
     addInputListener(laberinto->getHeroe());
     for (size_t i = 0; i < laberinto->getVillanos().size(); i++)
     {
