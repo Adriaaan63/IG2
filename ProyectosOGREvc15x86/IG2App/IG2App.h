@@ -3,6 +3,7 @@
 
 #include "IG2ApplicationContext.h"
 #include "Laberinto.h"
+#include "Cinematica.h"
 #include "Heroe.h"
 #include "Villano.h"
 #include <OgreSceneManager.h>
@@ -37,6 +38,7 @@ protected:
     OgreBites::TextBox* InfoPlayer;
 
     Laberinto* laberinto = nullptr;
+    Cinematica* cinematica = nullptr;
 
     Ogre::SceneNode* mSinbadNode = nullptr;
 
@@ -48,6 +50,7 @@ protected:
     Ogre::Light* light = nullptr;
     Ogre::SceneNode* mLightParent = nullptr;
     Ogre::SceneNode* mLightNode = nullptr;
+    Ogre::SceneNode* mLightNode1 = nullptr;
     
     Ogre::SceneNode* mCamNode = nullptr;
     OgreBites::CameraMan* mCamMgr = nullptr;

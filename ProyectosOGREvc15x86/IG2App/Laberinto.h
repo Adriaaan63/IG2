@@ -22,6 +22,7 @@ private:
     int typeLight;
     Light* light;
     int n_villano = 0;
+    SceneNode* nodeSuelo;
     
 public:
     Laberinto(const std::string& nombreArchivo, SceneManager* sceneManager, SceneNode* parentNode, SceneNode* camNode)
@@ -32,6 +33,7 @@ public:
         createLightHeroe(sceneManager);
     }
     ~Laberinto(){}
+    void setVisibleLaberinto(bool visible);
     void createFloor(SceneManager* sceneManager);
     void createLightHeroe(SceneManager* sceneManager);
     void cargarDesdeFichero(const std::string& nombreArchivo, SceneManager* sceneManager, SceneNode* parentNode)

@@ -15,7 +15,7 @@ private:
 public:
     Heroe(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab) :
         Personaje(pos, node, sceneManager, mesh, lab, Vector3(0, 0, 1), Vector3(0, 0, 1), 3),
-        puntos(0), TextInfoPlayer(nullptr), speed(1) {}
+        puntos(0), TextInfoPlayer(nullptr), speed(5) {}
 
     ~Heroe() {}
 

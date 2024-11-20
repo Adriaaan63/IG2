@@ -120,6 +120,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bloque.h" />
+    <ClInclude Include="Cinematica.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Helices.h" />
     <ClInclude Include="Heroe.h" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bloque.cpp" />
+    <ClCompile Include="Cinematica.cpp" />
     <ClCompile Include="Helices.cpp" />
     <ClCompile Include="Heroe.cpp" />
     <ClCompile Include="Hueco.cpp" />

@@ -28,6 +28,9 @@ void Villano::createVillano() {
 }
 
 void Villano::frameRendered(const Ogre::FrameEvent& evt) {
+    if (!visible) {
+        return;
+    }
     if (mNode == nullptr || lab == nullptr) {
         return;
     }

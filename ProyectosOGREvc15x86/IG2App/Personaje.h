@@ -9,6 +9,7 @@ protected:
 	Vector3 next_dir;
 	Laberinto* lab;
 	int vidas;
+	bool visible = true;
 public:
 	Personaje(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh, Laberinto* lab, Vector3 dir, Vector3 next_dir, int _vidas);
 	Personaje(Vector3 pos, SceneNode* node, SceneManager* sceneManager, Laberinto* lab, Vector3 dir, Vector3 next_dir, int vidas);
@@ -17,7 +18,10 @@ public:
 
 	void giro();
 	int getVidas() const { return vidas; };
-
+	void setVisiblePersonaje(bool _visible) { 
+		visible = _visible; 
+		setVisible(_visible);
+	};
 	/*virtual void frameRendered(const Ogre::FrameEvent& evt) const = 0;*/
 };
 

@@ -57,6 +57,7 @@ void IG2Object::setVisible (bool visible){
     mNode->setVisible(visible);
 }
 
+
 Vector3 IG2Object::getOrientation (){    
     Vector3 result = mNode->_getDerivedOrientation() * Vector3::UNIT_Z;
     return (Vector3(trunc (result.x), trunc (result.y), trunc (result.z)));

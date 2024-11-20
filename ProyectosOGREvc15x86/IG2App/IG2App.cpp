@@ -9,6 +9,9 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
     if (evt.keysym.sym == SDLK_ESCAPE){
         getRoot()->queueEndRendering();
     }
+    else if (evt.keysym.sym == SDLK_s) {
+        laberinto->setVisibleLaberinto(true);
+    }
     
   return true;
 }
@@ -79,7 +82,18 @@ void IG2App::setupScene(void){
         // The laberinto is created by loading from a file
     string nombreArchivo = "../stage1.txt";
     laberinto = new Laberinto(nombreArchivo, mSM, mSM->getRootSceneNode(), mCamNode);
+    laberinto->setVisibleLaberinto(false);
     //------------------------------------------------------------------------
+     //Creating the cinematic
+    cinematica = new Cinematica(mSM, mSM->getRootSceneNode(), mCamNode);
+    Light* luz = mSM->createLight("Luz");
+    luz->setType(Ogre::Light::LT_DIRECTIONAL);
+    luz->setDiffuseColour(0.5, 0.5, 0.5);
+
+    mLightNode1 = mSM->getRootSceneNode()->createChildSceneNode("nLuz1");
+    //mLightNode = mCamNode->createChildSceneNode("nLuz");
+    mLightNode1->attachObject(luz);
+    mLightNode1->setDirection(Ogre::Vector3(0, -1,0));
     // Creating the light
     mSM->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
 

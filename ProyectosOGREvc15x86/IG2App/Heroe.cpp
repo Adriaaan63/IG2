@@ -2,7 +2,9 @@
 #include "Laberinto.h"
 
 bool Heroe::keyPressed(const OgreBites::KeyboardEvent& evt) {
-    
+    if (!visible) {
+        return true;
+    }
 
     if (evt.keysym.sym == SDLK_UP) {
         next_dir = Vector3(0, 0, -1);
@@ -23,6 +25,9 @@ bool Heroe::keyPressed(const OgreBites::KeyboardEvent& evt) {
     return true;
 }
 void Heroe::frameRendered(const Ogre::FrameEvent& evt) {
+    if (!visible) {
+        return;
+    }
     if (mNode == nullptr || lab == nullptr) {
         return;
     }
