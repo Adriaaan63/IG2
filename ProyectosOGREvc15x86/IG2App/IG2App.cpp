@@ -11,6 +11,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
     }
     else if (evt.keysym.sym == SDLK_s) {
         laberinto->setVisibleLaberinto(true);
+        laberinto->ajustarCamara(mCamNode);
         cinematica->setVisibleCinematica(false);
         mLightNode1->setVisible(false);
         mSM->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
@@ -118,6 +119,7 @@ void IG2App::setupScene(void){
     laberinto->getHeroe()->setInfoText(InfoPlayer);
    
     addInputListener(cinematica->getHeroe());
+    addInputListener(cinematica->getVillanos());
     addInputListener(laberinto->getHeroe());
     for (size_t i = 0; i < laberinto->getVillanos().size(); i++)
     {

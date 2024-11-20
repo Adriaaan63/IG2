@@ -29,7 +29,7 @@ public:
     {
         cargarDesdeFichero(nombreArchivo, sceneManager, parentNode);
         createFloor(sceneManager);
-        ajustarCamara(camNode);
+        /*ajustarCamara(camNode);*/
         createLightHeroe(sceneManager);
     }
     ~Laberinto(){}

@@ -18,6 +18,7 @@ Adaptado de OgreApplicationContext.cpp  en OGREbites\src
 #include <OgreBitesConfigDialog.h>
 #include <OgreWindowEventUtilities.h>
 
+
 //#include <OgreConfigPaths.h>    // IG2: lo quito xq las rutas son absolutas y deben ser relativas al directorio de la solución
 //#include <OgreOverlaySystem.h>  // IG2: lo he incluido en el .h para evitar declaraciones adelantadas
 //#include <SDL.h>				  // IG2: lo he incluido en el .h para evitar declaraciones adelantadas
@@ -182,7 +183,7 @@ namespace OgreBites {
 		mode >> w; // width
 		mode >> token; // 'x' as seperator between width and height
 		mode >> h; // height
-				
+		
 		miscParams["FSAA"] = ropts["FSAA"].currentValue;
 		miscParams["vsync"] = ropts["VSync"].currentValue;
 		miscParams["gamma"] = ropts["sRGB Gamma Conversion"].currentValue;  
