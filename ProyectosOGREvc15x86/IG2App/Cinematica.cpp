@@ -20,7 +20,7 @@ void Cinematica::createLightCinematica(SceneManager* sceneManager) {
 
 }
 void Cinematica::setVisibleCinematica(bool visible) {
-   /* villanos->setVisible(visible);*/
-    heroe->setVisible(visible);
+    villanos->setVisiblePersonaje(visible);
+    heroe->setVisiblePersonaje(visible);
     nodeSuelo->setVisible(visible);
 }

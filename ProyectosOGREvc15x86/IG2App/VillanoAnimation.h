@@ -30,22 +30,22 @@ public:
         
         // Keyframe 2: Go to the right 
 
-        kf = track-> createNodeKeyFrame(7 ); 
+        kf = track-> createNodeKeyFrame(8 ); 
         keyframePos += Ogre::Vector3::UNIT_X * movementLength; 
         addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(1, 0, 0)));
 
         //KeyFrame 3: rotate
 
-        kf = track->createNodeKeyFrame(8);
+        kf = track->createNodeKeyFrame(9);
         addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(-1, 0, 0)));
 
          //Keyframe 4: Go to the initial position 
-        kf = track-> createNodeKeyFrame(15);
+        kf = track-> createNodeKeyFrame(16);
         keyframePos += Ogre::Vector3::NEGATIVE_UNIT_X * movementLength;
         addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(-1, 0, 0)));
 
         //KeyFrame 5: rotate
-        kf = track->createNodeKeyFrame(16);
+        kf = track->createNodeKeyFrame(17);
         addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(1, 0, 0)));
 
         // Keyframe 6: Go to the right 

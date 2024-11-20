@@ -20,12 +20,27 @@ private:
     Real durStep = 5;
     Vector3 src = Vector3(0, 0, 1);
     Vector3 scale;
+    float timer = 0.0f;
+    Ogre::Entity* sword1;
+    Ogre::Entity* sword2;
 public:
     HeroeAnimation(Vector3 pos, SceneNode* node, SceneManager* sceneManager, String mesh) :
         Personaje(pos, node, sceneManager, mesh),
         TextInfoPlayer(nullptr),scale(Vector3(4, 4, 4)), keyframePos(pos) {
         
         setScale(scale);
+        createAnimationHeroe("Dance", danceAnimation);
+        sword1 = mSM->createEntity("Sword.mesh");
+        sword2 = mSM->createEntity("Sword.mesh");
+
+        // Vincula las espadas a los huesos del esqueleto de Sinbad
+        entity->attachObjectToBone("Handle.L", sword1); // La espada izquierda
+        entity->attachObjectToBone("Handle.R", sword2); // La espada derecha
+        sword1->setVisible(false);
+        sword2->setVisible(false);
+
+        createAnimationHeroe("DrawSwords", swordAnimation);
+        createAnimationHeroe("RunBase", runAnimation);
         createAnimationHeroeWalk();
     }
 
@@ -41,10 +56,12 @@ public:
     }
     void updateText();
     ;
-    void createAnimationHeroe(bool loop, bool enable, string animation) {
-        danceAnimation = entity->getAnimationState(animation);
-        danceAnimation->setLoop(loop);
-        danceAnimation->setEnabled(enable);
+    void createAnimationHeroe(string animation, AnimationState*& animatioState) {
+         animatioState = entity->getAnimationState(animation);
+    }
+    void activeAnimation(bool loop, bool enable, AnimationState* animatioState) {
+        animatioState->setLoop(loop);
+        animatioState->setEnabled(enable);
     }
     void createAnimationHeroeWalk() {
         Animation* animation = mSM->createAnimation("HeroeWalking", duration);
@@ -55,17 +72,19 @@ public:
         //Keyframe 1 (Init state) 
 
         kf = track->createNodeKeyFrame(0);
-        addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(1, 0, 0)),scale);
+        addkeyFrame(track, kf, keyframePos,src.getRotationTo(Vector3(0, 0, 1)), scale);
 
+        kf = track->createNodeKeyFrame(0.5);
+        addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(1, 0, 0)), scale);
         // Keyframe 2: Go to the right 
 
-        kf = track->createNodeKeyFrame(3);
+        kf = track->createNodeKeyFrame(4);
         keyframePos += Ogre::Vector3::UNIT_X * movementLength;
         addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(1, 0, 0)),scale);
 
         //KeyFrame 3: rotate
 
-        kf = track->createNodeKeyFrame(4);
+        kf = track->createNodeKeyFrame(5);
         addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(-1, 0, 0)),scale);
 
         //Keyframe 4: Go to the initial position 
@@ -78,12 +97,16 @@ public:
         addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(1, 0, 0)),scale);
 
         // Keyframe 6: Go to the right 
-        kf = track->createNodeKeyFrame(17);
+        kf = track->createNodeKeyFrame(16);
         keyframePos += Ogre::Vector3::UNIT_X * movementLength;
         addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(1, 0, 0)),scale);
 
+        //KeyFrame 5: rotate
+        kf = track->createNodeKeyFrame(17);
+        addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(0, 0, 1)), scale);
+
         moveAnimation = mSM->createAnimationState("HeroeWalking");
-        moveAnimation->setLoop(true);
-        moveAnimation->setEnabled(true);
+        /*moveAnimation->setLoop(true);
+        moveAnimation->setEnabled(true);*/
     }
 };
