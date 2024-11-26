@@ -14,6 +14,7 @@
 #include <OgreInput.h>
 #include <SDL_keycode.h>
 #include <OgreMeshManager.h>
+#include <OgreParticleSystem.h>
 #include <sstream>
 #include <iostream>
 #include <string>

@@ -1,4 +1,5 @@
 #include "Personaje.h"
+#include <OgreParticleSystem.h>
 
 
 class VillanoAnimation : public Personaje
