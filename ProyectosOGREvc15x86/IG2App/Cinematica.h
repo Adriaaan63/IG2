@@ -6,7 +6,8 @@
 #include "IG2ApplicationContext.h"
 #include "HeroeAnimation.h"
 #include "VillanoAnimation.h"
-using namespace std;
+#include "EmisoresParticulas.h"
+
 class Cinematica
 {
 private:
@@ -15,6 +16,7 @@ private:
     string materialSuelo;
     int typeLight;
     Light* light;
+    std::vector<EmisoresParticulas*> particle_system_fire;
     
     SceneNode* nodeSuelo;
 
@@ -24,12 +26,14 @@ public:
         createFloor(sceneManager, camNode);
         ajustarCamara(camNode);
         createPersonajes(sceneManager, parentNode);
+        createFire(sceneManager, parentNode);
         /*createLightHeroe(sceneManager);*/
     }
     ~Cinematica() {}
     void setVisibleCinematica(bool visible);
     void createFloor(SceneManager* sceneManager, SceneNode* camNode);
     void createLightCinematica(SceneManager* sceneManager);
+    void createFire(SceneManager* sceneManager, SceneNode* parentNode);
    
     HeroeAnimation* getHeroe() const {
         return heroe;

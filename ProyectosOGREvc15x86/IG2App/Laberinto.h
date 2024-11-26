@@ -17,7 +17,7 @@ private:
     std::vector<std::vector<Bloque*>> bloques;
     Heroe* heroe;
     std::vector<Villano*> villanos;
-    std::vector<IG2Object*> particle_system_bloques;
+    std::vector<EmisoresParticulas*> particle_system_bloques;
     string materialSuelo;
     string materialPerla;
     string materialMuro;
@@ -79,7 +79,7 @@ public:
                     //Hueco perlas con humo
                     bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true, materialPerla);
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
-                    particle_system_bloques.push_back(new EmisoresParticulas(pos, parentNode->createChildSceneNode(), sceneManager, n_particle_system_bloques));
+                    particle_system_bloques.push_back(new EmisoresParticulas(pos, parentNode->createChildSceneNode(), sceneManager, n_particle_system_bloques, 0));
                     n_particle_system_bloques++;
                 }
                 else if (linea[j] == 'h') {

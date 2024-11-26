@@ -24,3 +24,10 @@ void Cinematica::setVisibleCinematica(bool visible) {
     heroe->setVisiblePersonaje(visible);
     nodeSuelo->setVisible(visible);
 }
+void Cinematica::createFire(SceneManager* sceneManager, SceneNode* parentNode) {
+    int n_particle_system_fire = 0;
+    for (int i = 0; i < 1; i++) {
+        particle_system_fire.push_back(new EmisoresParticulas(Vector3(0,0,0), parentNode, sceneManager, n_particle_system_fire, 1));
+        n_particle_system_fire++;
+    }
+}
