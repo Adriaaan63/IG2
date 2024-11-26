@@ -13,6 +13,7 @@ private:
     AnimationState* moveAnimation;
     AnimationState* swordAnimation;
     AnimationState* runAnimation;
+    AnimationState* armsAnimation;
     int movementLength = 70;
     int movementLength2 = WIDTH_FLOOR / 2;
     Real duration = 17.0;
@@ -41,6 +42,7 @@ public:
 
         createAnimationHeroe("DrawSwords", swordAnimation);
         createAnimationHeroe("RunBase", runAnimation);
+        createAnimationHeroe("RunTop", armsAnimation);
         createAnimationHeroeWalk();
     }
 
