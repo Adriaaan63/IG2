@@ -122,6 +122,7 @@
     <ClInclude Include="Bloque.h" />
     <ClInclude Include="Cinematica.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="EmisoresParticulas.h" />
     <ClInclude Include="Helices.h" />
     <ClInclude Include="Heroe.h" />
     <ClInclude Include="HeroeAnimation.h" />
@@ -141,6 +142,7 @@
   <ItemGroup>
     <ClCompile Include="Bloque.cpp" />
     <ClCompile Include="Cinematica.cpp" />
+    <ClCompile Include="EmisoresParticulas.cpp" />
     <ClCompile Include="Helices.cpp" />
     <ClCompile Include="Heroe.cpp" />
     <ClCompile Include="HeroeAnimation.cpp" />

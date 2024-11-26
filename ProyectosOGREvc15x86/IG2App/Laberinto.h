@@ -6,6 +6,7 @@
 #include "Villano.h"
 #include "IG2ApplicationContext.h"
 #include "Heroe.h"
+#include "EmisoresParticulas.h"
 using namespace std;
 
 class Laberinto
@@ -16,12 +17,14 @@ private:
     std::vector<std::vector<Bloque*>> bloques;
     Heroe* heroe;
     std::vector<Villano*> villanos;
+    std::vector<IG2Object*> particle_system_bloques;
     string materialSuelo;
     string materialPerla;
     string materialMuro;
     int typeLight;
     Light* light;
     int n_villano = 0;
+    int n_particle_system_bloques = 0;
     SceneNode* nodeSuelo;
     
 public:
@@ -71,6 +74,14 @@ public:
                     bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true, materialPerla);
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
                 }
+                else if (linea[j] == 's')
+                {
+                    //Hueco perlas con humo
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true, materialPerla);
+                    bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
+                    particle_system_bloques.push_back(new EmisoresParticulas(pos, parentNode->createChildSceneNode(), sceneManager, n_particle_system_bloques));
+                    n_particle_system_bloques++;
+                }
                 else if (linea[j] == 'h') {
                     bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true, materialPerla);
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
@@ -84,7 +95,7 @@ public:
                     
                 }
                 else if (linea[j] == 'V') {
-                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true, materialPerla);
+                    bloques[i][j] = new Bloque(pos, parentNode->createChildSceneNode(), sceneManager, "sphere.mesh", true,  materialPerla);
                     bloques[i][j]->setScale(Vector3(0.1, 0.1, 0.1));
                     villanos.push_back(new Villano(pos, parentNode->createChildSceneNode(), sceneManager, this, n_villano));
                     n_villano++;

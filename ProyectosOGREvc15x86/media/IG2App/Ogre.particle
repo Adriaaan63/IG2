@@ -2,13 +2,13 @@ particle_system example/laberintoSmoke {
     billboard_type   point
     particle_width   35
     particle_height  35
-    quota            500
+    quota            200
     material         example/smoke
     emitter Point {
         direction       0 1 0      
         position        0 0 0
         angle           180          
-        emission_rate   50         
+        emission_rate   10         
         time_to_live    10            
         velocity_min    50           
         velocity_max    80           
