@@ -78,7 +78,8 @@ material materialAspasEnemigo
 	}
 }
 
-material example/smoke{
+material smoke
+{
 	technique{
 		pass{
 			lighting off
@@ -93,3 +94,18 @@ material example/smoke{
 	}
 }
 
+material fire
+{
+	technique{
+		pass{
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+			diffuse vertexcolour
+			texture_unit{
+				texture smokecolors.png
+				tex_address_mode clamp
+			}
+		}
+	}
+}
