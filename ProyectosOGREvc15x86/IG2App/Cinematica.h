@@ -57,7 +57,7 @@ public:
 
         camNode->setPosition(centroX, alturaCamara, centroZ);
 
-        camNode->lookAt(Vector3(0, 0, 0), Node::TS_WORLD);
+        camNode->lookAt(Vector3(0, -10, 0), Node::TS_WORLD);
     }
 
 };

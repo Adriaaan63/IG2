@@ -7,6 +7,7 @@
 #include "IG2ApplicationContext.h"
 #include "Heroe.h"
 #include "EmisoresParticulas.h"
+#include <OgreTrays.h>
 using namespace std;
 
 class Laberinto

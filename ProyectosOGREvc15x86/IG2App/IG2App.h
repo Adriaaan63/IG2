@@ -24,7 +24,8 @@ class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListene
 public:
     explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()
     virtual ~IG2App() { };                                    // delete -> shutdown()
- 
+private:
+    void createInfoPlayer();
 protected:
     virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
     virtual void setup();
@@ -37,6 +38,9 @@ protected:
 
     OgreBites::Label* InfoTitle;
     OgreBites::TextBox* InfoPlayer;
+
+    OgreBites::Label* InfoCinematica;
+    OgreBites::TextBox* InfoPlayerCine;
 
     Laberinto* laberinto = nullptr;
     Cinematica* cinematica = nullptr;

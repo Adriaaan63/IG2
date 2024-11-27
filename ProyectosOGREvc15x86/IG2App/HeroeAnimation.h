@@ -4,6 +4,12 @@
 #include <OgreTrays.h>       
 #include <OgreOverlaySystem.h> 
 
+enum class HeroState {
+    Dancing,
+    Running,
+    Fighting,
+    Idle
+};
 
 class HeroeAnimation : public Personaje
 {
@@ -72,12 +78,13 @@ public:
         track->setAssociatedNode(mNode);
         TransformKeyFrame* kf;
         //Keyframe 1 (Init state) 
-
+        activeAnimation(true, true, danceAnimation);
         kf = track->createNodeKeyFrame(0);
         addkeyFrame(track, kf, keyframePos,src.getRotationTo(Vector3(0, 0, 1)), scale);
 
         kf = track->createNodeKeyFrame(0.5);
         addkeyFrame(track, kf, keyframePos, src.getRotationTo(Vector3(1, 0, 0)), scale);
+        
         // Keyframe 2: Go to the right 
 
         kf = track->createNodeKeyFrame(4);
@@ -111,4 +118,9 @@ public:
         /*moveAnimation->setLoop(true);
         moveAnimation->setEnabled(true);*/
     }
+    HeroState determineState(float time);
+    void handleDancing(const Ogre::FrameEvent& evt);
+    void handleRunning(const Ogre::FrameEvent& evt);
+    void handleFighting(const Ogre::FrameEvent& evt);
+    void resetToIdle();
 };

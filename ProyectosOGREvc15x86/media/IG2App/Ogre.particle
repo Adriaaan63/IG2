@@ -97,7 +97,9 @@ particle_system fireCinematica {
     }
 
     affector Rotator {                         
-        rotation_speed_range_min    -10        
-        rotation_speed_range_max    10         
+        rotation_speed_range_min    -30        
+        rotation_speed_range_max    55      
+        rotation_range_start        0
+        rotation_range_end          180   
     }
 }

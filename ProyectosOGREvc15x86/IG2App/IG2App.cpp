@@ -15,11 +15,22 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         cinematica->setVisibleCinematica(false);
         mLightNode1->setVisible(false);
         mSM->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
+        createInfoPlayer();
     }
     
   return true;
 }
+void IG2App::createInfoPlayer() {
+    mTrayMgr->destroyWidget("InfoCinematica");
+    mTrayMgr->destroyWidget("InfoPlayerCine");
+    InfoTitle = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Game Info", 200);
 
+   InfoPlayer = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoPlayer", "Info", 200, 120);
+   InfoPlayer->appendText("Puntos:" + to_string(0));
+   InfoPlayer->appendText("Vidas:" + to_string(laberinto->getHeroe()->getVidas()));
+
+   laberinto->getHeroe()->setInfoText(InfoPlayer);
+}
 void IG2App::shutdown(){
     
   mShaderGenerator->removeSceneManager(mSM);
@@ -98,9 +109,15 @@ void IG2App::setupScene(void){
     //mLightNode = mCamNode->createChildSceneNode("nLuz");
     mLightNode1->attachObject(luz);
     mLightNode1->setDirection(Ogre::Vector3(0, -1,0));
-    // Creating the light
-   
+    InfoCinematica = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoCinematica", "Insert coin(s) to start", 300);
 
+    InfoPlayerCine = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoPlayerCine", "Game Info here!", 300, 120);
+    InfoPlayerCine->appendText("Waiting for the player...\n");
+    InfoPlayerCine->appendText("1 player mode" );
+
+    cinematica->getHeroe()->setInfoText(InfoPlayerCine);
+    //------------------------------------------------------------------------
+    // Creating the light
    //mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
     
     Light* light = laberinto->getLightHeroe();
@@ -110,13 +127,6 @@ void IG2App::setupScene(void){
     mLightNode->attachObject(light);
     laberinto->getHeroe()->setLight(mLightNode);
 
-   InfoTitle = mTrayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "InfoLabel", "Game Info", 200);
-    
-   InfoPlayer = mTrayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "InfoPlayer", "Info", 200, 120);
-   InfoPlayer->appendText("Puntos:" + to_string(0));
-   InfoPlayer->appendText("Vidas:" + to_string(laberinto->getHeroe()->getVidas()));
-
-    laberinto->getHeroe()->setInfoText(InfoPlayer);
    
     addInputListener(cinematica->getHeroe());
     addInputListener(cinematica->getVillanos());
