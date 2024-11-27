@@ -112,16 +112,35 @@ material fire
 
 material example/sky{
 	technique{
-lighting off
 		pass{
-		texture_unit{
-			texture spacesky.jpg
+			ambient 0.5 0.5 0.5
+			diffuse 1.0 1.0 1.0
+			lighting off
+			texture_unit{
+				texture spaceSky.jpg
+				colour_op modulate 
+				scroll_anim 0.1 0.1
+			}
+	
+			texture_unit{
+				texture lightMap.jpg
+				colour_op add
+				scroll_anim 0.1 0.1
+			}
 		}
 	}
-	
-		texture_unit{
-			texture flare.png
-			colour_op add
+}
+material example/textureTest{ 
+	technique { 
+		pass { 
+			texture_unit { 
+				texture floor_diffuse.PNG 
+				colour_op modulate 
+			} 
+			texture_unit { 
+				texture flare.png 
+				colour_op modulate 
+			} 
 		}
 	}
 }

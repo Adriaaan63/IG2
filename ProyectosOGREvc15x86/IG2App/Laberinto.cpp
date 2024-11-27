@@ -45,4 +45,7 @@ void Laberinto::setVisibleLaberinto(bool visible) {
     }
     heroe->setVisiblePersonaje(visible);
     nodeSuelo->setVisible(visible);
+    for (auto e : particle_system_bloques) {
+        e->setVisible(visible);
+    }
 }

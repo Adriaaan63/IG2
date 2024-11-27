@@ -7,7 +7,7 @@ void Cinematica::createFloor(SceneManager* sceneManager, SceneNode* camNode) {
     nodeSuelo = sceneManager->getRootSceneNode()->createChildSceneNode();
     nodeSuelo->setPosition(0, 0, 0);
     
-    entSuelo->setMaterialName("materialMuro");
+    entSuelo->setMaterialName("example/textureTest");
     nodeSuelo->attachObject(entSuelo);
 
 }
@@ -23,6 +23,10 @@ void Cinematica::setVisibleCinematica(bool visible) {
     villanos->setVisiblePersonaje(visible);
     heroe->setVisiblePersonaje(visible);
     nodeSuelo->setVisible(visible);
+    for (size_t i = 0; i < particle_system_fire.size(); i++)
+    {
+        particle_system_fire[i]->setVisible(visible);
+    }
 }
 void Cinematica::createFire(SceneManager* sceneManager, SceneNode* parentNode) {
     float posIniX = nodeSuelo->getPosition().x - WIDTH_FLOOR/2;
@@ -32,4 +36,5 @@ void Cinematica::createFire(SceneManager* sceneManager, SceneNode* parentNode) {
     for (int i = 1; i < PS_FIRE; i++) {
         particle_system_fire.push_back(new EmisoresParticulas(Vector3( posIniX + i* space,posIniY,posIniZ), parentNode->createChildSceneNode(), sceneManager, i, 1));
     }
+    
 }
