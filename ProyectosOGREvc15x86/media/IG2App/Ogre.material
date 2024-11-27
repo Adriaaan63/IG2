@@ -144,3 +144,55 @@ material example/textureTest{
 		}
 	}
 }
+vertex_program skyVertexShader {
+    source SpaceSkyZoomLightVS.glsl
+    default_params {
+        param_named_auto modelViewProjMat worldviewproj_matrix
+        
+    }
+}
+
+fragment_program skyFragmentShader {
+    source SpaceSkyZoomLightFS.glsl
+    default_params {
+       param_named texturaL 	int	    0 
+	   param_named texturaM 	int	    1
+	   param_named BF 		 	float	0.5
+	   param_named intLuzAmb 	float	1.0
+    }
+}
+
+material  practica2/spaceSkyZoomLightShader {
+    technique {
+        pass {
+			lighting off
+			// Referencia al shader de vértices
+            vertex_program_ref skyVertexShader {
+                
+            }
+
+            // Referencia al shader de fragmentos
+            fragment_program_ref skyFragmentShader {
+                
+            }
+            
+            // Primera unidad de textura: espacio del cielo
+            texture_unit {
+                texture spaceSky.jpg 2d
+                tex_address_mode clamp // Fijar coordenadas en [0, 1]
+                filtering bilinear
+            }
+
+            // Segunda unidad de textura: mapa de luz
+            texture_unit {
+                texture lightMap.jpg 2d
+                tex_address_mode wrap // Fijar coordenadas en [0, 1]
+                
+            }
+
+            
+        }
+    }
+}
+
+
