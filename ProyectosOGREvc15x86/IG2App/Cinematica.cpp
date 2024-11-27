@@ -25,7 +25,11 @@ void Cinematica::setVisibleCinematica(bool visible) {
     nodeSuelo->setVisible(visible);
 }
 void Cinematica::createFire(SceneManager* sceneManager, SceneNode* parentNode) {
-    for (int i = 0; i < 10; i++) {
-        particle_system_fire.push_back(new EmisoresParticulas(Vector3(i*10,0,0), parentNode->createChildSceneNode(), sceneManager, i, 1));
+    float posIniX = nodeSuelo->getPosition().x - WIDTH_FLOOR/2;
+    float posIniZ = nodeSuelo->getPosition().x - HEIGHT_FLOOR/2;
+    float posIniY = nodeSuelo->getPosition().y - 45;
+    float space = WIDTH_FLOOR / PS_FIRE;
+    for (int i = 1; i < PS_FIRE; i++) {
+        particle_system_fire.push_back(new EmisoresParticulas(Vector3( posIniX + i* space,posIniY,posIniZ), parentNode->createChildSceneNode(), sceneManager, i, 1));
     }
 }
