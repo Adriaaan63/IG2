@@ -109,3 +109,19 @@ material fire
 		}
 	}
 }
+
+material example/sky{
+	technique{
+lighting off
+		pass{
+		texture_unit{
+			texture spacesky.jpg
+		}
+	}
+	
+		texture_unit{
+			texture flare.png
+			colour_op add
+		}
+	}
+}

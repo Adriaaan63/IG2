@@ -35,6 +35,7 @@ public:
         createFloor(sceneManager);
         /*ajustarCamara(camNode);*/
         createLightHeroe(sceneManager);
+        createSky(sceneManager);
     }
     ~Laberinto(){}
     void setVisibleLaberinto(bool visible);
@@ -161,6 +162,13 @@ public:
             posiblesDirecciones.push_back(Vector3(0, 0, 1));
         }
         return posiblesDirecciones;
+    }
+
+    void createSky(SceneManager* sceneManager) {
+        Ogre::Plane plane;
+        plane.d = 1000;
+        plane.normal = Vector3(0,1,0);
+        sceneManager->setSkyPlane(true, plane, "example/sky", 1500, 50);
     }
    
 };
