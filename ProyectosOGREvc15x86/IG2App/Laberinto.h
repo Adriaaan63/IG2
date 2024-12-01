@@ -168,8 +168,8 @@ public:
         Ogre::Plane plane;
         plane.d = 1000;
         plane.normal = Vector3(0,1,0);
-        //sceneManager->setSkyPlane(true, plane, "practica2/spaceSkyZoomLightShader", 1500, 50, true, 0.2, 50, 50);
-        sceneManager->setSkyPlane(true, plane, "example/sky", 1500, 50, true, 0.2, 50, 50);
+        sceneManager->setSkyPlane(true, plane, "practica2/spaceSkyZoomLightShader", 1500, 50, true, 0.2, 50, 50);
+        //sceneManager->setSkyPlane(true, plane, "example/sky", 1500, 50, true, 0.2, 50, 50);
     }
    
 };

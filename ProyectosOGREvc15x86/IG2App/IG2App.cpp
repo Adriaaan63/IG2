@@ -1,5 +1,6 @@
 #include "IG2App.h"
 
+
 using namespace Ogre;
 using namespace std;
 
@@ -13,6 +14,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         laberinto->setVisibleLaberinto(true);
         laberinto->ajustarCamara(mCamNode);
         laberinto->createSky(mSM);
+        actualizarShaderCielo = true;
         cinematica->setVisibleCinematica(false);
         mLightNode1->setVisible(false);
         mSM->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
@@ -135,6 +137,22 @@ void IG2App::setupScene(void){
     for (size_t i = 0; i < laberinto->getVillanos().size(); i++)
     {
         addInputListener(laberinto->getVillanos()[i]);
+    }
+}
+
+void IG2App::frameRendered(const Ogre::FrameEvent& evt) {
+    if (actualizarShaderCielo) {
+        static float time = 0.0f;
+        time += evt.timeSinceLastFrame;
+
+        float cycle = fmod(time, 15.0f) / 15.0f;
+
+        float zoomFactor = 0.3f + 0.7f * sin(cycle * 2.0f * M_PI);
+        float lightIntensity = 0.3f + 0.7f * cos(cycle * 2.0f * M_PI);
+
+        Ogre::MaterialPtr material = Ogre::MaterialManager::getSingleton().getByName("practica2/spaceSkyZoomLightShader");
+        material->getTechnique(0)->getPass(0)->getVertexProgramParameters()->setNamedConstant("zoomFactor", zoomFactor);
+        material->getTechnique(0)->getPass(0)->getFragmentProgramParameters()->setNamedConstant("intLuzAmb", lightIntensity);
     }
 }
 

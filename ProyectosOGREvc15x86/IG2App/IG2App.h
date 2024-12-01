@@ -15,6 +15,8 @@
 #include <SDL_keycode.h>
 #include <OgreMeshManager.h>
 #include <OgreParticleSystem.h>
+#include <OgreMaterialManager.h>
+#include <OgreTechnique.h>
 #include <sstream>
 #include <iostream>
 #include <string>
@@ -31,6 +33,9 @@ protected:
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
+    virtual void frameRendered(const Ogre::FrameEvent& evt);
+
+    bool actualizarShaderCielo = false;
     
     OgreBites::TextBox* InfoTextBox;
     OgreBites::Label* InfoPuntos;
