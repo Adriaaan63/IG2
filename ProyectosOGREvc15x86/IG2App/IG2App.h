@@ -35,7 +35,6 @@ protected:
     virtual void setupScene();
     virtual void frameRendered(const Ogre::FrameEvent& evt);
 
-    bool actualizarShaderCielo = false;
     
     OgreBites::TextBox* InfoTextBox;
     OgreBites::Label* InfoPuntos;

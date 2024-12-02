@@ -35,6 +35,15 @@ void Cinematica::createFire(SceneManager* sceneManager, SceneNode* parentNode) {
     float space = WIDTH_FLOOR / PS_FIRE;
     for (int i = 1; i < PS_FIRE; i++) {
         particle_system_fire.push_back(new EmisoresParticulas(Vector3( posIniX + i* space,posIniY,posIniZ), parentNode->createChildSceneNode(), sceneManager, i, 1));
-    }
-    
+    }    
+}
+
+void Cinematica::createSphere(SceneManager* sceneManager, SceneNode* parentNode) {
+    Entity* entity = sceneManager->createEntity("sphere", "sphere.mesh");
+    SceneNode* esfera = parentNode->createChildSceneNode("esfera");
+    esfera->attachObject(entity);
+    esfera->setPosition(Vector3(0, 5, -25));
+    esfera->setScale(Vector3(0.3, 0.3, 0.3));
+    esfera->setVisible(true);
+    entity->setMaterialName("practica2/SphereHoles");
 }

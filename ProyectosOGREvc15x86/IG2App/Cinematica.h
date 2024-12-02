@@ -27,6 +27,7 @@ public:
         ajustarCamara(camNode);
         createPersonajes(sceneManager, parentNode);
         createFire(sceneManager, parentNode);
+        createSphere(sceneManager, parentNode);
         /*createLightHeroe(sceneManager);*/
     }
     ~Cinematica() {}
@@ -34,6 +35,7 @@ public:
     void createFloor(SceneManager* sceneManager, SceneNode* camNode);
     void createLightCinematica(SceneManager* sceneManager);
     void createFire(SceneManager* sceneManager, SceneNode* parentNode);
+    void createSphere(SceneManager* sceneManager, SceneNode* parentNode);
    
     HeroeAnimation* getHeroe() const {
         return heroe;

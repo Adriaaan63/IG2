@@ -210,4 +210,55 @@ material practica2/spaceSkyZoomLightShader {
     }
 }
 
+vertex_program SphereHolesVS glsl{
+	source SphereHolesVS.glsl
+	default_params{
+		param_named_auto modelViewProjMat worldviewproj_matrix
+	}
+}
+
+fragment_program SphereHolesFS glsl{
+	source SphereHolesFS.glsl
+	default_params{
+		param_named texturaL int 0
+		param_named texturaM int 1
+		param_named BF float 0.5
+		param_named intLuzAmb float 1.0
+	}
+}
+
+material practica2/SphereHoles
+{
+    technique
+    {
+        pass
+        {
+            cull_hardware none
+            cull_software none
+
+            vertex_program_ref SphereHolesVS {
+                param_named_auto worldViewProj matrix_world_view_proj
+                param_named_auto flipping render_target_flipping
+            }
+
+            fragment_program_ref SphereHolesFS {
+                param_named_auto corrosionTexture texture_unit 0
+                param_named_auto bumpyTexture texture_unit 1
+                param_named_auto dirtTexture texture_unit 2
+            }
+
+            texture_unit {
+                texture corrosion.jpg 2d
+            }
+            texture_unit {
+                texture BumpyMetal.jpg 2d
+            }
+            texture_unit {
+                texture Material_dirt.jpg 2d
+            }
+        }
+    }
+}
+
+
 

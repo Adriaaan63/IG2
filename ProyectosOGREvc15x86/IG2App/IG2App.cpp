@@ -14,7 +14,6 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         laberinto->setVisibleLaberinto(true);
         laberinto->ajustarCamara(mCamNode);
         laberinto->createSky(mSM);
-        actualizarShaderCielo = true;
         cinematica->setVisibleCinematica(false);
         mLightNode1->setVisible(false);
         mSM->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_STENCIL_MODULATIVE);
@@ -141,7 +140,6 @@ void IG2App::setupScene(void){
 }
 
 void IG2App::frameRendered(const Ogre::FrameEvent& evt) {
-    if (actualizarShaderCielo) {
         static float time = 0.0f;
         time += evt.timeSinceLastFrame;
 
@@ -155,7 +153,6 @@ void IG2App::frameRendered(const Ogre::FrameEvent& evt) {
         Ogre::Pass* pass = technique->getPass(0);
         pass->getVertexProgramParameters()->setNamedConstant("zoomFactor", zoomFactor);
         pass->getFragmentProgramParameters()->setNamedConstant("intLuzAmb", lightIntensity);
-    }
 }
 
 
