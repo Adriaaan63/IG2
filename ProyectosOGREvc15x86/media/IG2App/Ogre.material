@@ -162,6 +162,23 @@ fragment_program skyFragmentShader {
     }
 }
 
+vertex_program SpaceSkyZoomLightVS glsl{
+	source SpaceSkyZoomLightVS.glsl
+	default_params{
+		param_named_auto modelViewProjMat worldviewproj_matrix
+	}
+}
+
+fragment_program SpaceSkyZoomLightFS glsl{
+	source SpaceSkyZoomLightFS.glsl
+	default_params{
+		param_named texturaL int 0
+		param_named texturaM int 1
+		param_named BF float 0.5
+		param_named intLuzAmb float 1.0
+	}
+}
+
 material practica2/spaceSkyZoomLightShader {
     technique {
         pass {
@@ -169,14 +186,14 @@ material practica2/spaceSkyZoomLightShader {
 
             vertex_program_ref SpaceSkyZoomLightVS {
                 param_named_auto modelViewProjMat worldviewproj_matrix
-                param_named zoomFactor float 1.0 
+                param_named zoomFactor float 1.0
             }
 
             fragment_program_ref SpaceSkyZoomLightFS {
                 param_named texturaL int 0
                 param_named texturaM int 1
-                param_named BF float 0.5 
-                param_named intLuzAmb float 1.0 
+                param_named BF float 0.5
+                param_named intLuzAmb float 1.0
             }
 
             texture_unit {
@@ -192,6 +209,5 @@ material practica2/spaceSkyZoomLightShader {
         }
     }
 }
-
 
 

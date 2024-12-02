@@ -151,9 +151,12 @@ void IG2App::frameRendered(const Ogre::FrameEvent& evt) {
         float lightIntensity = 0.3f + 0.7f * cos(cycle * 2.0f * M_PI);
 
         Ogre::MaterialPtr material = Ogre::MaterialManager::getSingleton().getByName("practica2/spaceSkyZoomLightShader");
-        material->getTechnique(0)->getPass(0)->getVertexProgramParameters()->setNamedConstant("zoomFactor", zoomFactor);
-        material->getTechnique(0)->getPass(0)->getFragmentProgramParameters()->setNamedConstant("intLuzAmb", lightIntensity);
+        Ogre::Technique* technique = material->getTechnique(0);
+        Ogre::Pass* pass = technique->getPass(0);
+        pass->getVertexProgramParameters()->setNamedConstant("zoomFactor", zoomFactor);
+        pass->getFragmentProgramParameters()->setNamedConstant("intLuzAmb", lightIntensity);
     }
 }
+
 
 
