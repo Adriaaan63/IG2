@@ -144,28 +144,13 @@ material example/textureTest{
 		}
 	}
 }
-vertex_program skyVertexShader {
-    source SpaceSkyZoomLightVS.glsl
-    default_params {
-        param_named_auto modelViewProjMat worldviewproj_matrix
-        
-    }
-}
 
-fragment_program skyFragmentShader {
-    source SpaceSkyZoomLightFS.glsl
-    default_params {
-       param_named texturaL 	int	    0 
-	   param_named texturaM 	int	    1
-	   param_named BF 		 	float	0.5
-	   param_named intLuzAmb 	float	1.0
-    }
-}
 
 vertex_program SpaceSkyZoomLightVS glsl{
 	source SpaceSkyZoomLightVS.glsl
 	default_params{
 		param_named_auto modelViewProjMat worldviewproj_matrix
+		param_named_auto sintime sintime_0_2pi 15;
 	}
 }
 
@@ -185,45 +170,43 @@ material practica2/spaceSkyZoomLightShader {
             lighting off
 
             vertex_program_ref SpaceSkyZoomLightVS {
-                param_named_auto modelViewProjMat worldviewproj_matrix
-                param_named zoomFactor float 1.0
             }
 
             fragment_program_ref SpaceSkyZoomLightFS {
-                param_named texturaL int 0
-                param_named texturaM int 1
-                param_named BF float 0.5
-                param_named intLuzAmb float 1.0
+            }
+
+            texture_unit {
+                
+				texture lightMap.jpg 2d
+                tex_address_mode clamp
             }
 
             texture_unit {
                 texture spacesky.jpg 2d
-                tex_address_mode clamp
-                filtering bilinear
-            }
-
-            texture_unit {
-                texture lightMap.jpg 2d
                 tex_address_mode clamp
             }
         }
     }
 }
 
-vertex_program SphereHolesVS glsl{
+vertex_program SphereHolesVS glsl
+{
 	source SphereHolesVS.glsl
-	default_params{
-		param_named_auto modelViewProjMat worldviewproj_matrix
+	default_params
+	{
+	param_named_auto modelViewProjMat worldviewproj_matrix
 	}
 }
-
-fragment_program SphereHolesFS glsl{
+fragment_program SphereHolesFS glsl
+{
 	source SphereHolesFS.glsl
-	default_params{
-		param_named texturaL int 0
-		param_named texturaM int 1
-		param_named BF float 0.5
+	default_params
+	{ 
+		param_named texturaC int 0
+		param_named texturaB int 1
+		param_named texturaD int 2
 		param_named intLuzAmb float 1.0
+		param_named_auto flipping render_target_flipping
 	}
 }
 
@@ -233,28 +216,29 @@ material practica2/SphereHoles
     {
         pass
         {
-            cull_hardware none
-            cull_software none
+			lighting off
 
-            vertex_program_ref SphereHolesVS {
-                param_named_auto worldViewProj matrix_world_view_proj
-                param_named_auto flipping render_target_flipping
+			vertex_program_ref SphereHolesVS {
             }
 
             fragment_program_ref SphereHolesFS {
-                param_named_auto corrosionTexture texture_unit 0
-                param_named_auto bumpyTexture texture_unit 1
-                param_named_auto dirtTexture texture_unit 2
             }
+			
+            cull_hardware none
+            cull_software none
 
+            
             texture_unit {
-                texture corrosion.jpg 2d
+				texture corrosion.jpg 2d
+				tex_address_mode clamp
             }
             texture_unit {
                 texture BumpyMetal.jpg 2d
+				tex_address_mode clamp
             }
             texture_unit {
                 texture Material_dirt.jpg 2d
+				tex_address_mode clamp
             }
         }
     }

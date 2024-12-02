@@ -39,7 +39,7 @@ void Cinematica::createFire(SceneManager* sceneManager, SceneNode* parentNode) {
 }
 
 void Cinematica::createSphere(SceneManager* sceneManager, SceneNode* parentNode) {
-    Entity* entity = sceneManager->createEntity("sphere", "sphere.mesh");
+    Entity* entity = sceneManager->createEntity("sphere", "uv_sphere.mesh");
     SceneNode* esfera = parentNode->createChildSceneNode("esfera");
     esfera->attachObject(entity);
     esfera->setPosition(Vector3(0, 5, -25));

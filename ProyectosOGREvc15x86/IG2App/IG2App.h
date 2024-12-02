@@ -33,7 +33,6 @@ protected:
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
-    virtual void frameRendered(const Ogre::FrameEvent& evt);
 
     
     OgreBites::TextBox* InfoTextBox;

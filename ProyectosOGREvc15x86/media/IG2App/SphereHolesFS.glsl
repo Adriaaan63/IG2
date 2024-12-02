@@ -1,41 +1,34 @@
 #version 330 core
+in vec2 vUv0;
+uniform sampler2D texturaL;
+uniform sampler2D texturaM;
+uniform sampler2D texturaN;
 
-in vec3 frag_position;  // Posición del fragmento
-in vec3 frag_normal;    // Normal del fragmento
-in float frontFace;     // Indica si la cara es frontal o trasera
+uniform float flipping;
+uniform float intLuzAmb;
+out vec4 fFragColor;
 
-uniform sampler2D corrosionTexture; // Textura de corrosión
-uniform sampler2D bumpyTexture;     // Textura de metal rugoso
-uniform sampler2D dirtTexture;      // Textura de suciedad
 
-out vec4 frag_color; // Color final del fragmento
+void main() {
+    bool frontFacing = (flipping > -1)? gl_FrontFacing : !gl_FrontFacing;
 
-void main()
-{
-    // Calcular la distancia desde el centro de la esfera para determinar la aplicación de texturas
-    float distanceFromCenter = length(frag_position);
+    vec3 colorL = vec3(texture(texturaL, vUv0));
+    vec3 colorM = vec3(texture(texturaM, vUv0));
+    vec3 colorN = vec3(texture(texturaN, vUv0));
 
-    // Usar la normal para identificar si la cara es exterior o interior
-    bool isOuter = (frontFace > 0.5);
+    vec3 colorCorrosion = colorL;
+    vec3 color;
 
-    // Controlar qué textura aplicar basado en la ubicación (frontal o trasera)
-    vec4 finalColor;
-
-    if (isOuter)
-    {
-        // Aplicar la textura de corrosión en el exterior
-        vec2 uv = frag_position.xy / frag_position.z; // Ejemplo de mapeo de coordenadas UV
-        finalColor = texture(corrosionTexture, uv);
+    if (colorCorrosion.r > 0.6) {
+        discard;
     }
-    else
-    {
-        // Aplicar la textura de suciedad en el interior
-        vec2 uv = frag_position.xy / frag_position.z; // Ejemplo de mapeo de coordenadas UV
-        finalColor = texture(dirtTexture, uv);
+    else{
+        if (frontFacing) {
+            color = colorM;
+        } else {
+        color = colorN;
+        }
     }
-
-    // Composición final del color con la textura de metal rugoso para detalles
-    vec4 bumpyColor = texture(bumpyTexture, frag_position.xy);
-    frag_color = mix(finalColor, bumpyColor, 0.5); // Mezcla de texturas
+    
+    fFragColor = vec4(color, 1.0);
 }
-
