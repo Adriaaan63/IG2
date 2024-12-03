@@ -160,7 +160,8 @@ fragment_program SpaceSkyZoomLightFS glsl{
 		param_named texturaL int 0
 		param_named texturaM int 1
 		param_named BF float 0.5
-		param_named intLuzAmb float 3.0
+		param_named minL float 0.0
+		param_named maxL float 1.0
 	}
 }
 

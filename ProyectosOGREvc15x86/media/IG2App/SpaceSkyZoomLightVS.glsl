@@ -5,6 +5,7 @@ uniform mat4 modelViewProjMat;
 uniform float sintime; // Variable para el tiempo
 out vec2 vUv0;
 out float zf;
+out float tiempo;
 
 void main() {
     // Calcular el factor de zoom ZF a partir de sintime
@@ -21,7 +22,7 @@ void main() {
 
     // Pasar el valor del factor de zoom para el fragment shader
     zf = ZF;
-
+    tiempo = sintime;
     // Calcular la posición final del vértice
     gl_Position = modelViewProjMat * vertex;
 }
