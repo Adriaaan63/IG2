@@ -7,7 +7,8 @@ void Cinematica::createFloor(SceneManager* sceneManager, SceneNode* camNode) {
     nodeSuelo = sceneManager->getRootSceneNode()->createChildSceneNode();
     nodeSuelo->setPosition(0, 0, 0);
     
-    entSuelo->setMaterialName("example/textureTest");
+    //entSuelo->setMaterialName("example/textureTest");
+    entSuelo->setMaterialName("practica2/wavesShader");
     nodeSuelo->attachObject(entSuelo);
 
 }

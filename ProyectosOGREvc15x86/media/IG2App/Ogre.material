@@ -244,5 +244,47 @@ material practica2/SphereHoles
     }
 }
 
+vertex_program wavesShaderVS glsl
+{
+	source wavesShaderVS.glsl
+	default_params
+	{
+	param_named_auto modelViewProjMat worldviewproj_matrix
+	param_named_auto sintime sintime_0_2pi 15;
+	param_named centro float4 0.0 0.0 0.0 1.0
+	}
+}
+fragment_program wavesShaderFS glsl
+{
+	source wavesShaderFS.glsl
+	default_params
+	{ 
+		param_named texturaL int 0
+	}
+}
+material practica2/wavesShader
+{
+    technique
+    {
+        pass
+        {
+			lighting off
+
+			vertex_program_ref wavesShaderVS {
+            }
+
+            fragment_program_ref wavesShaderFS {
+            }
+
+            
+            texture_unit {
+				texture Water02.jpg 2d
+				tex_address_mode clamp
+            }
+           
+        }
+    }
+}
+
 
 
