@@ -1,18 +1,23 @@
-#version 330 core 
-uniform sampler2D texturaL;  // Tipo sampler2D para texturas 2D 
-uniform sampler2D texturaM;  // -> unidades de textura (int) 
-uniform float BF;  // Blending factor 
-uniform float intLuzAmb; // Luz ambiente blanca 
-in vec2 vUv0; // Out (del vertex shader) 
-in float zf;
-out vec4 fFragColor; // Out (del fragment shader) 
-void main() 
-{ 
-    vec3 colorL = vec3(texture(texturaL, vUv0)); // Acceso a téxel 
-    vec3 colorM = vec3(texture(texturaM, vUv0)); // Configuración! 
-    colorL = vec3(texture(texturaL, vUv0)); // Acceso a téxel 
-    colorM = vec3(texture(texturaM, vUv0)); // Configuración! 
-    vec3 color = mix(colorL, colorM, BF) * zf * intLuzAmb; //Mix-> (1-BF).colorL + BF.colorM fFragColor = vec4(color, 1.0); 
-    fFragColor=vec4(color,1.0);
-    
+#version 330 core
+uniform sampler2D texturaL;  // Textura 1
+uniform sampler2D texturaM;  // Textura 2
+uniform float BF;            // Factor de mezcla (Blending factor)
+uniform float intLuzAmb;     // Intensidad de la luz ambiente
+in vec2 vUv0;                // Coordenadas UV modificadas desde el vertex shader
+in float zf;                 // Factor de zoom desde el vertex shader
+out vec4 fFragColor;         // Color final del fragmento
+
+void main() {
+    // Obtener los colores de las texturas usando las coordenadas UV
+    vec3 colorL = vec3(texture(texturaL, vUv0));
+    vec3 colorM = vec3(texture(texturaM, vUv0));
+
+    // Mezclar los colores de las texturas usando el blending factor
+    vec3 color = mix(colorL, colorM, BF);
+
+    // Aplicar el factor de zoom y la luz ambiente
+    color *= zf * intLuzAmb;
+
+    // Establecer el color final del fragmento
+    fFragColor = vec4(color, 1.0);
 }

@@ -2,19 +2,26 @@
 in vec4 vertex;
 in vec2 uv0;
 uniform mat4 modelViewProjMat;
+uniform float sintime; // Variable para el tiempo
 out vec2 vUv0;
-uniform float sintime;
 out float zf;
 
 void main() {
-    vUv0 = uv0;
+    // Calcular el factor de zoom ZF a partir de sintime
+    float ZF = sintime * 0.25 + 1.0;
 
-    float ZF = sintime*0.25 + 1;
-    vUv0 = vUv0 * ZF;
+    // Centrar las coordenadas UV en el rango [-0.5, 0.5]
+    vec2 uvCentered = uv0 - vec2(0.5, 0.5);
 
-    vUv0.s = vUv0.s + 0.5;
-    vUv0.t = vUv0.t + 0.5;
+    // Aplicar el zoom
+    uvCentered *= ZF;
+
+    // Trasladar las coordenadas UV al rango [0, 1]
+    vUv0 = uvCentered + vec2(0.5, 0.5);
+
+    // Pasar el valor del factor de zoom para el fragment shader
     zf = ZF;
-    
+
+    // Calcular la posición final del vértice
     gl_Position = modelViewProjMat * vertex;
 }
