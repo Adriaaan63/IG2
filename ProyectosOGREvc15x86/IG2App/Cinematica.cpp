@@ -24,6 +24,7 @@ void Cinematica::setVisibleCinematica(bool visible) {
     villanos->setVisiblePersonaje(visible);
     heroe->setVisiblePersonaje(visible);
     nodeSuelo->setVisible(visible);
+    nodeEsfera->setVisible(visible);
     for (size_t i = 0; i < particle_system_fire.size(); i++)
     {
         particle_system_fire[i]->setVisible(visible);
@@ -41,10 +42,10 @@ void Cinematica::createFire(SceneManager* sceneManager, SceneNode* parentNode) {
 
 void Cinematica::createSphere(SceneManager* sceneManager, SceneNode* parentNode) {
     Entity* entity = sceneManager->createEntity("sphere", "uv_sphere.mesh");
-    SceneNode* esfera = parentNode->createChildSceneNode("esfera");
-    esfera->attachObject(entity);
-    esfera->setPosition(Vector3(0, 5, -25));
-    esfera->setScale(Vector3(0.3, 0.3, 0.3));
-    esfera->setVisible(true);
+    nodeEsfera = parentNode->createChildSceneNode("esfera");
+    nodeEsfera->attachObject(entity);
+    nodeEsfera->setPosition(Vector3(0, 5, -25));
+    nodeEsfera->setScale(Vector3(0.3, 0.3, 0.3));
+    nodeEsfera->setVisible(true);
     entity->setMaterialName("practica2/SphereHoles");
 }

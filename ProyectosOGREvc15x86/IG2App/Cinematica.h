@@ -19,6 +19,7 @@ private:
     std::vector<EmisoresParticulas*> particle_system_fire;
     
     SceneNode* nodeSuelo;
+    SceneNode* nodeEsfera;
 
 public:
     Cinematica(SceneManager* sceneManager, SceneNode* parentNode, SceneNode* camNode)
