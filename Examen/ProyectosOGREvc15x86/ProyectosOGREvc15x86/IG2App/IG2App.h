@@ -22,6 +22,7 @@
 //#include "DataSizes.h"
 #include <vector>
 #include "Avion.h"
+#include "playerAnimation.h"
 
 using namespace std;
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{

@@ -99,6 +99,8 @@ void IG2App::setupScene(void){
     //addInputListener(pala);
     Avion* avion = new Avion({ 0,0,0 }, mSM->getRootSceneNode(), mSM);
     addInputListener(avion);
+    playerAnimation* player = new playerAnimation({ -350,100,0 }, mSM->getRootSceneNode(), mSM);
+    addInputListener(player);
     //------------------------------------------------------------------------
     //
     

@@ -120,20 +120,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Avion.h" />
+    <ClInclude Include="EmisorParticulas.h" />
     <ClInclude Include="Helice.h" />
     <ClInclude Include="IG2ApplicationContext.h" />
     <ClInclude Include="IG2App.h" />
     <ClInclude Include="IG2Object.h" />
     <ClInclude Include="Pala.h" />
+    <ClInclude Include="playerAnimation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Avion.cpp" />
+    <ClCompile Include="EmisorParticulas.cpp" />
     <ClCompile Include="Helice.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
     <ClCompile Include="IG2Main.cpp" />
     <ClCompile Include="IG2App.cpp" />
     <ClCompile Include="IG2Object.cpp" />
     <ClCompile Include="Pala.cpp" />
+    <ClCompile Include="playerAnimation.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
