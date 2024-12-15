@@ -19,8 +19,11 @@
 #include <sstream>
 #include <iostream>
 #include <string>
-#include "DataSizes.h"
+//#include "DataSizes.h"
+#include <vector>
+#include "Avion.h"
 
+using namespace std;
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{
 
 public:
@@ -36,7 +39,7 @@ protected:
     
 private:
     
-    static const Vector3 CAMERA_INIT_POSITION;
+    static const Ogre::Vector3 CAMERA_INIT_POSITION;
         
     // Scene manager and tray system
     Ogre::SceneManager* mSM = nullptr;

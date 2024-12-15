@@ -4,7 +4,7 @@ using namespace Ogre;
 using namespace std;
 
 // Initial position for the camera
-const Vector3 IG2App::CAMERA_INIT_POSITION = {0, 700, 1600};
+const Ogre::Vector3 IG2App::CAMERA_INIT_POSITION = Ogre::Vector3(0, 700, 1600);
 
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         
@@ -94,10 +94,11 @@ void IG2App::setupScene(void){
     // Setting up the shadows
     //mSM->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
     
-    
-    
-    
-    
+    //Helice* pala = new Helice({ 0,0,0 }, mSM->getRootSceneNode(), mSM, 1, 10);
+    //Pala* nuevaPala = new Pala({ 0,0,0 }, mSM->getRootSceneNode(), mSM, Vector3(0.5, 0.05, 0.2), 1, 5);
+    //addInputListener(pala);
+    Avion* avion = new Avion({ 0,0,0 }, mSM->getRootSceneNode(), mSM);
+    addInputListener(avion);
     //------------------------------------------------------------------------
     //
     
