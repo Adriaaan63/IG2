@@ -103,7 +103,7 @@ PlayerState playerAnimation::determineState(float time) {
 
 void playerAnimation::handleJumping(const Ogre::FrameEvent& evt) {
 	if (timer >= 6.0f && timer < 6.2f) {
-		activeAnimation(false, true, jumpAnimationStart);
+		activeAnimation(true, true, jumpAnimationStart);
 		jumpAnimationStart->addTime(evt.timeSinceLastFrame);
 	}
 	else if (timer >= 6.2f && timer < 9.0f) {
@@ -113,7 +113,7 @@ void playerAnimation::handleJumping(const Ogre::FrameEvent& evt) {
 	}
 	else if (timer >= 9.0f) {
 		activeAnimation(false, false, jumpAnimationLoop);
-		activeAnimation(false, true, jumpAnimationEnd);
+		activeAnimation(true, true, jumpAnimationEnd);
 		jumpAnimationEnd->addTime(evt.timeSinceLastFrame);
 	}
 	moveAnimation->addTime(evt.timeSinceLastFrame);

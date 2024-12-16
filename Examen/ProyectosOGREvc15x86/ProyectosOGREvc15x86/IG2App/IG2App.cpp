@@ -101,6 +101,15 @@ void IG2App::setupScene(void){
     addInputListener(avion);
     playerAnimation* player = new playerAnimation({ -350,100,0 }, mSM->getRootSceneNode(), mSM);
     addInputListener(player);
+
+    Ogre::Plane p;
+    p.d = 1000;
+    p.normal = Vector3(0, 1, 0);
+
+    mSM->setSkyPlane(true, p, "example/spaceSkyExam", 40, 1);
+
+    IG2Object* sphere = new IG2Object(Vector3(0, 500, 500), mSM->getRootSceneNode()->createChildSceneNode(), mSM, "uv_sphere.mesh");
+    sphere->setMaterialName("example/SphereHoleExam");
     //------------------------------------------------------------------------
     //
     

@@ -40,3 +40,92 @@ material example/smoke{
 		}
 	}
 }
+vertex_program SpaceSkyVS glsl{
+	source SpaceSkyVS.glsl
+	default_params{
+		param_named_auto modelViewProjMat worldviewproj_matrix
+		param_named_auto sintime sintime_0_2pi 15;
+	}
+}
+
+fragment_program SpaceSkyFS glsl{
+	source SpaceSkyFS.glsl
+	default_params{
+		param_named texturaL int 0
+		param_named texturaM int 1
+		param_named BF float 0.5
+		param_named minL float 0.0
+		param_named maxL float 1.0
+	}
+}
+
+material example/spaceSkyExam {
+    technique {
+        pass {
+            
+
+            vertex_program_ref SpaceSkyVS {
+            }
+
+            fragment_program_ref SpaceSkyFS {
+            }
+
+            texture_unit {
+				texture spacesky.jpg 2d
+            }
+
+            texture_unit {
+				texture lightMap.jpg 2d
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+
+vertex_program SphereHoleVS glsl{
+	source SphereHoleVS.glsl
+	default_params{
+		param_named_auto modelViewProjMat worldviewproj_matrix
+	}
+}
+
+fragment_program SphereHoleFS glsl{
+	source SphereHoleFs.glsl
+	default_params{
+		param_named texturaL int 0
+		param_named texturaM int 1
+		param_named texturaN int 2
+		param_named BF float 0.5
+		param_named intLuzAmb float 1.0
+        param_named_auto flipping render_target_flipping
+	}
+}
+
+material example/SphereHoleExam {
+    technique {
+        pass {
+            lighting off
+
+            vertex_program_ref SphereHoleVS {
+            }
+
+            fragment_program_ref SphereHoleFS {
+            }
+            cull_hardware none
+            cull_software none
+            texture_unit {
+				texture checker.png 2d
+                tex_address_mode clamp
+            }
+
+            texture_unit {
+				texture corrosion.jpg 2d
+                tex_address_mode clamp
+            }
+             texture_unit {
+				texture BumpyMetal.jpg 2d
+                tex_address_mode clamp
+            }
+        }
+    }
+}
